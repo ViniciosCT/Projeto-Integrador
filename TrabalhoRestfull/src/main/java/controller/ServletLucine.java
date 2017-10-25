@@ -30,35 +30,37 @@ public class ServletLucine extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String acao = request.getParameter("acao");
-        Utilitarios ut = new Utilitarios();
-        ArrayList<String> saida = new ArrayList<String>();
-        System.out.println("Aqui:" +acao);
-
-        if (acao.equals("salvar")) {
-
-            String artigo = request.getParameter("artigo");
-            ut.indexacao(artigo);
-
-        }
-        else{
-
-            String pesquisa = request.getParameter("pesquisa");
-            System.out.println(pesquisa);
-            try {
-                saida = ut.recuperaArtigo(pesquisa);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-            System.out.println(saida);
-
-        }
-
-        request.setAttribute("saida", saida);
-        RequestDispatcher despachante;
-        despachante = request.getServletContext().getRequestDispatcher("/index.jsp");
-        despachante.forward(request, response);
+//
+//
+//        String acao = request.getParameter("acao");
+//        Utilitarios ut = new Utilitarios();
+//        ArrayList<String> saida = new ArrayList<String>();
+//        System.out.println("Aqui:" +acao);
+//
+//        if (acao.equals("salvar")) {
+//
+//            String artigo = request.getParameter("artigo");
+//            ut.indexacao(artigo);
+//
+//        }
+//        else{
+//
+//            String pesquisa = request.getParameter("pesquisa");
+//            System.out.println(pesquisa);
+//            try {
+//                saida = ut.recuperaArtigo(pesquisa);
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//
+//            System.out.println(saida);
+//
+//        }
+//
+//        request.setAttribute("saida", saida);
+//        RequestDispatcher despachante;
+//        despachante = request.getServletContext().getRequestDispatcher("/index.jsp");
+//        despachante.forward(request, response);
 
     }
 
