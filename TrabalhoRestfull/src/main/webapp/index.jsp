@@ -51,8 +51,8 @@ limitations under the License
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.cyan-light_blue.min.css">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="estiloCSS/styles.css">
+    <link rel="stylesheet" href="estiloCSS/estilo.css">
     <style>
         #view-source {
             position: fixed;

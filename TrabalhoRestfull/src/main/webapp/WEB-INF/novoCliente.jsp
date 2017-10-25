@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%--<%@ page isELIgnored="false"%>--%>
-<!doctype html>
+
+<%@ page contentType="text/html;charset=UTF-8" language="java" %><!doctype html>
 <!--
 Material Design Lite
 Copyright 2015 Google Inc. All rights reserved.
@@ -75,7 +75,7 @@ limitations under the License
                 Gerenciador Qualitat
             </div>
             <div class="paginaAtual">
-                Gerenciar Clientes
+                Novo Cliente
             </div>
             <div class="mdl-layout-spacer"></div>
         </div>
@@ -111,44 +111,37 @@ limitations under the License
         <div class="mdl-grid demo-content">
 
 
-            <table class="mdl-data-table mdl-js-data-table mdl-shadow--6dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--6-col-desktop">
-                <thead>
-                <tr>
-                    <!-- class "mdl-data-table__cell--non-numeric", align values to left -->
-                    <th class="mdl-data-table__cell--non-numeric">Nome</th>
-                    <th class="mdl-data-table__cell--non-numeric">Telefone</th>
-                    <th class="mdl-data-table__cell--non-numeric">Email</th>
-                    <th class="mdl-data-table__cell--non-numeric">Editar</th>
-                </tr>
-                </thead>
+            <div class="mdl-card mdl-shadow--6dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--6-col-desktop">
+                <div class="mdl-card__title mdl-color--primary mdl-color-text--white">
+                    <h2 class="mdl-card__title-text">Cadastro:</h2>
+                </div>
+                <div class="mdl-grid demo-content">
 
+                    <form action="#" id="cadastro" method="post">
+                    </form>
+                    <div class="mdl-card__supporting-text mdl-cell mdl-cell--6-col">
 
-                <tbody class="tabela">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input form="cadastro" class="mdl-textfield__input" type="text" id="sample3">
+                            <label form="cadastro" class="mdl-textfield__label" for="sample3">Nome</label>
+                        </div>
 
-                <c:forEach var="cliente" items="${clientes}">
-                    <tr>
-                        <!-- class "mdl-data-table__cell--non-numeric", align values to left -->
-                        <td class="mdl-data-table__cell--non-numeric">${cliente.nome}</td>
-                        <td class="mdl-data-table__cell--non-numeric">${cliente.telefone}</td>
-                        <td class="mdl-data-table__cell--non-numeric">${cliente.email}</td>
-                        <td class="mdl-data-table__cell--non-numeric">
-                            <a href="alterarCliente.html">
-                                <button class="mdl-color-text--white mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-                                    <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">mode_edit</i>
-                                </button>
-                            </a>
-                        </td>
-                    </tr>
-                </c:forEach>
-                </tbody>
-            </table>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input form="cadastro" class="mdl-textfield__input" type="text" id="sample3">
+                            <label form="cadastro" class="mdl-textfield__label" for="sample3">E-mail</label>
+                        </div>
 
-            <div class="mdl-cell">
-                <a href="novoCliente.html">
-                    <button class="mdl-color-text--white mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-                        Novo
-                    </button>
-                </a>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input form="cadastro" class="mdl-textfield__input" type="text" id="sample3">
+                            <label form="cadastro" class="mdl-textfield__label" for="sample3">Telefone</label>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="mdl-card__actions mdl-card--border">
+                    <input form="cadastro" type="submit" class="mdl-color-text--white mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"></input>
+                </div>
             </div>
 
         </div>
