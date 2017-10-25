@@ -28,7 +28,7 @@ public class Funcionario {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_usuario")
     @SequenceGenerator(name = "seq_usuario", sequenceName = "seq_usuario")
-    @Column(name="codigo")
+    @Column(name="id")
     public Long getCodigo() {
         return codigo;
     }

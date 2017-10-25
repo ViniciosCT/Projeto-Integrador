@@ -1,7 +1,6 @@
 package br.ufsm.csi.seguranca.model;
 
 import javax.persistence.*;
-import java.util.Collection;
 import java.util.Date;
 
 @Entity
@@ -13,7 +12,6 @@ public class Cliente {
     private String telefone;
     private String email;
     private int codigo;
-    private Collection<Veiculo> veiculos;
 
     //Gerados:
     @Column(name="nome")
@@ -34,7 +32,7 @@ public class Cliente {
         this.dataCadastro = dataCadastro;
     }
 
-    @Column(name="Telefone")
+    @Column(name="telefone")
     public String getTelefone() {
         return telefone;
     }
@@ -43,7 +41,7 @@ public class Cliente {
         this.telefone = telefone;
     }
 
-    @Column(name="Email")
+    @Column(name="email")
     public String getEmail() {
         return email;
     }
@@ -55,7 +53,7 @@ public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_usuario")
     @SequenceGenerator(name = "seq_usuario", sequenceName = "seq_usuario")
-    @Column(name="codigo")
+    @Column(name="codCliente")
     public int getCodigo() {
         return codigo;
     }
@@ -64,12 +62,4 @@ public class Cliente {
         this.codigo = codigo;
     }
 
-    @OneToMany(mappedBy = "cliente")
-    public Collection<Veiculo> getVeiculos() {
-        return veiculos;
-    }
-
-    public void setVeiculos(Collection<Veiculo> veiculos) {
-        this.veiculos = veiculos;
-    }
 }

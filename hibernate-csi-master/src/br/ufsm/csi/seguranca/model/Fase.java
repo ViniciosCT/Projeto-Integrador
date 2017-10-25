@@ -1,12 +1,15 @@
 package br.ufsm.csi.seguranca.model;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 
+@Entity
+@Table(name="Fase")
 public class Fase {
 
     private String nome;
     private int codigo;
-    private ArrayList<OrdemServico> Ordens;
+    private ArrayList<OrdemServico> ordens;
 
     public double getFaturamento(){
         return 0;
@@ -17,6 +20,7 @@ public class Fase {
     }
 
     //Gerados:
+    @Column(name = "nome")
     public String getNome() {
         return nome;
     }
@@ -25,6 +29,10 @@ public class Fase {
         this.nome = nome;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_usuario")
+    @SequenceGenerator(name = "seq_usuario", sequenceName = "seq_usuario")
+    @Column(name="id")
     public int getCodigo() {
         return codigo;
     }
@@ -33,11 +41,12 @@ public class Fase {
         this.codigo = codigo;
     }
 
+    @ManyToMany(mappedBy = "fases")
     public ArrayList<OrdemServico> getOrdens() {
-        return Ordens;
+        return ordens;
     }
 
     public void setOrdens(ArrayList<OrdemServico> ordens) {
-        Ordens = ordens;
+        this.ordens = ordens;
     }
 }

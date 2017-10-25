@@ -1,7 +1,10 @@
 package br.ufsm.csi.seguranca.model;
 
+import javax.persistence.*;
 import java.util.Date;
 
+@Entity
+@Table(name = "Orcamento")
 public class Orcamento {
 
     private String descricaoReparos;
@@ -17,6 +20,7 @@ public class Orcamento {
     }
 
     //Gerados:
+    @Column(name = "descricaoReparos")
     public String getDescricaoReparos() {
         return descricaoReparos;
     }
@@ -25,6 +29,7 @@ public class Orcamento {
         this.descricaoReparos = descricaoReparos;
     }
 
+    @Column(name = "entrada")
     public Date getEntrada() {
         return entrada;
     }
@@ -33,6 +38,7 @@ public class Orcamento {
         this.entrada = entrada;
     }
 
+    @Column(name = "valorTotal")
     public double getValorTotal() {
         return valorTotal;
     }
@@ -41,6 +47,7 @@ public class Orcamento {
         this.valorTotal = valorTotal;
     }
 
+    @Column(name = "valorTotalMO")
     public double getValorTotalMO() {
         return valorTotalMO;
     }
@@ -49,6 +56,7 @@ public class Orcamento {
         this.valorTotalMO = valorTotalMO;
     }
 
+    @Column(name = "valorTotalPecas")
     public double getValorTotalPecas() {
         return valorTotalPecas;
     }
@@ -57,6 +65,10 @@ public class Orcamento {
         this.valorTotalPecas = valorTotalPecas;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_usuario")
+    @SequenceGenerator(name = "seq_usuario", sequenceName = "seq_usuario")
+    @Column(name="id")
     public int getCodigo() {
         return codigo;
     }
@@ -65,6 +77,7 @@ public class Orcamento {
         this.codigo = codigo;
     }
 
+    @Column(name="codVeiculo")
     public Veiculo getVeiculo() {
         return veiculo;
     }

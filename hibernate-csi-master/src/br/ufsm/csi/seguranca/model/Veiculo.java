@@ -3,7 +3,7 @@ package br.ufsm.csi.seguranca.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "veiculo")
+@Table(name = "Veiculo")
 public class Veiculo {
 
     private String placa;
@@ -16,6 +16,7 @@ public class Veiculo {
     private Cliente cliente;
 
     //Gerados:
+    @Column(name = "placa")
     public String getPlaca() {
         return placa;
     }
@@ -24,6 +25,7 @@ public class Veiculo {
         this.placa = placa;
     }
 
+    @Column(name = "ano")
     public int getAno() {
         return ano;
     }
@@ -32,6 +34,7 @@ public class Veiculo {
         this.ano = ano;
     }
 
+    @Column(name = "marca")
     public String getMarca() {
         return marca;
     }
@@ -40,6 +43,7 @@ public class Veiculo {
         this.marca = marca;
     }
 
+    @Column(name = "combustivel")
     public String getCombustivel() {
         return combustivel;
     }
@@ -48,6 +52,7 @@ public class Veiculo {
         this.combustivel = combustivel;
     }
 
+    @Column(name = "modelo")
     public String getModelo() {
         return modelo;
     }
@@ -56,6 +61,7 @@ public class Veiculo {
         this.modelo = modelo;
     }
 
+    @Column(name = "cor")
     public String getCor() {
         return cor;
     }
@@ -67,7 +73,7 @@ public class Veiculo {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_usuario")
     @SequenceGenerator(name = "seq_usuario", sequenceName = "seq_usuario")
-    @Column(name="codigo")
+    @Column(name="codVeiculo")
     public int getCodigo() {
         return codigo;
     }
@@ -76,8 +82,7 @@ public class Veiculo {
         this.codigo = codigo;
     }
 
-    @ManyToOne
-    @JoinColumn(name="idCliente")
+    @Column(name="codCliente")
     public Cliente getCliente() {
         return cliente;
     }
