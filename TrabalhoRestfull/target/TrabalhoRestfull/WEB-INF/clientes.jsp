@@ -1,4 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%--<%@ page isELIgnored="false"%>--%>
 <!doctype html>
@@ -51,8 +50,8 @@ limitations under the License
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.cyan-light_blue.min.css">
-    <link rel="stylesheet" href="../estiloCSS/styles.css">
-    <link rel="stylesheet" href="../estiloCSS/estiloSistema.css">
+    <link rel="stylesheet" href="estiloCSS/styles.css">
+    <link rel="stylesheet" href="estiloCSS/estiloSistema.css">
     <style>
         #view-source {
             position: fixed;
@@ -119,6 +118,7 @@ limitations under the License
                     <th class="mdl-data-table__cell--non-numeric">Telefone</th>
                     <th class="mdl-data-table__cell--non-numeric">Email</th>
                     <th class="mdl-data-table__cell--non-numeric">Editar</th>
+                    <th class="mdl-data-table__cell--non-numeric">Excluir</th>
                 </tr>
                 </thead>
 
@@ -132,9 +132,16 @@ limitations under the License
                         <td class="mdl-data-table__cell--non-numeric">${cliente.telefone}</td>
                         <td class="mdl-data-table__cell--non-numeric">${cliente.email}</td>
                         <td class="mdl-data-table__cell--non-numeric">
-                            <a href="alterarCliente.html">
+                            <a href="ServletCliente?acao=editarRedirect&&codigo=${cliente.codigo}">
                                 <button class="mdl-color-text--white mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
                                     <i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">mode_edit</i>
+                                </button>
+                            </a>
+                        </td>
+                        <td class="mdl-data-table__cell--non-numeric">
+                            <a href="ServletCliente?acao=deletar&&codigo=${cliente.codigo}">
+                                <button class="mdl-color-text--white mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                                    <i class="mdl-color-text--red-grey-400 material-icons" role="presentation">delete_forever</i>
                                 </button>
                             </a>
                         </td>
@@ -144,7 +151,7 @@ limitations under the License
             </table>
 
             <div class="mdl-cell">
-                <a href="novoCliente.html">
+                <a href="ServletCliente?acao=novoRedirect">
                     <button class="mdl-color-text--white mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
                         Novo
                     </button>

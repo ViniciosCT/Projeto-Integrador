@@ -112,7 +112,7 @@ limitations under the License
                     </form>
                 </div>
                 <div class="mdl-card__actions mdl-card--border">
-                    <a href="index.html"><button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Entrar</button></a>
+                    <a href="ServletCliente?acao=listar"><button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Entrar</button></a>
                     <a href="#">Esqueci minha senha</a>
                 </div>
             </div>

@@ -1,5 +1,7 @@
 package controller;
 
+import dao.ClienteDAO;
+import model.Cliente;
 import util.Utilitarios;
 
 import javax.servlet.RequestDispatcher;
@@ -27,38 +29,67 @@ public class ServletCliente extends HttpServlet  {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
-/*
         String acao = request.getParameter("acao");
-        Utilitarios ut = new Utilitarios();
-        ArrayList<String> saida = new ArrayList<String>();
-        System.out.println("Aqui:" +acao);
+        System.out.println("Ação: " + acao);
+        ClienteDAO clidao = new ClienteDAO();
+        String pagina = "/index.jsp";
 
-        if (acao.equals("salvar")) {
+        if(acao.equals("listar")){
 
-            String artigo = request.getParameter("artigo");
-            ut.indexacao(artigo);
+            ArrayList<Cliente> clientes = clidao.getClientes();
 
-        }
-        else{
-
-            String pesquisa = request.getParameter("pesquisa");
-            System.out.println(pesquisa);
-            try {
-                saida = ut.recuperaArtigo(pesquisa);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-            System.out.println(saida);
+            pagina = "/WEB-INF/clientes.jsp";
+            request.setAttribute("clientes", clientes);
 
         }
+        else if(acao.equals("editarRedirect")){
+            Cliente cli = clidao.getCliente(Integer.parseInt(request.getParameter("codigo")));
+            pagina = "/WEB-INF/alterarCliente.jsp";
+            request.setAttribute("cliente", cli);
+        }
+        else if(acao.equals("editar")){
 
-        request.setAttribute("saida", saida);
+            Cliente cli = new Cliente();
+            cli.setNome(request.getParameter("nome"));
+            cli.setEmail(request.getParameter("email"));
+            cli.setTelefone(request.getParameter("telefone"));
+            cli.setCodigo(Integer.parseInt(request.getParameter("codigo")));
+
+            clidao.atualizaCliente(cli);
+
+            ArrayList<Cliente> clientes = clidao.getClientes();
+            pagina = "/WEB-INF/clientes.jsp";
+            request.setAttribute("clientes", clientes);
+
+        }
+        else if(acao.equals("novoRedirect")){
+            pagina = "/WEB-INF/novoCliente.jsp";
+        }
+        else if(acao.equals("novo")){
+
+            Cliente cli = new Cliente();
+            cli.setNome(request.getParameter("nome"));
+            cli.setEmail(request.getParameter("email"));
+            cli.setTelefone(request.getParameter("telefone"));
+
+            clidao.novoCliente(cli);
+            ArrayList<Cliente> clientes = clidao.getClientes();
+
+            pagina = "/WEB-INF/clientes.jsp";
+            request.setAttribute("clientes", clientes);
+
+        }
+        else if(acao.equals("deletar")){
+            clidao.deleteCliente( Integer.parseInt( request.getParameter("codigo") ) );
+            ArrayList<Cliente> clientes = clidao.getClientes();
+
+            pagina = "/WEB-INF/clientes.jsp";
+            request.setAttribute("clientes", clientes);
+        }
+
         RequestDispatcher despachante;
-        despachante = request.getServletContext().getRequestDispatcher("/index.jsp");
+        despachante = request.getServletContext().getRequestDispatcher(pagina);
         despachante.forward(request, response);
-        */
     }
 
     /**

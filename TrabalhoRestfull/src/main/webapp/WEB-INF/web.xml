@@ -5,14 +5,14 @@
 
   <display-name>Archetype Created Web Application</display-name>
   <servlet>
-    <servlet-name>ServletLucine</servlet-name>
-    <display-name>ServletLucine</display-name>
+    <servlet-name>ServletCliente</servlet-name>
+    <display-name>ServletCliente</display-name>
     <description></description>
-    <servlet-class>controller.ServletLucine</servlet-class>
+    <servlet-class>controller.ServletCliente</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ServletLucine</servlet-name>
-    <url-pattern>/ServletLucine</url-pattern>
+    <servlet-name>ServletCliente</servlet-name>
+    <url-pattern>/ServletCliente</url-pattern>
   </servlet-mapping>
 
   <!--<display-name>br.csi.jersey.first</display-name>-->

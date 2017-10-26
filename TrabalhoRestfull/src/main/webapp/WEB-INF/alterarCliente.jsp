@@ -1,4 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -52,8 +51,8 @@ limitations under the License
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.cyan-light_blue.min.css">
-    <link rel="stylesheet" href="../estiloCSS/styles.css">
-    <link rel="stylesheet" href="../estiloCSS/estiloSistema.css">
+    <link rel="stylesheet" href="estiloCSS/styles.css">
+    <link rel="stylesheet" href="estiloCSS/estiloSistema.css">
     <style>
         #view-source {
             position: fixed;
@@ -119,22 +118,24 @@ limitations under the License
                 <div class="mdl-grid demo-content">
 
                     <form action="#" id="cadastro">
+                        <input type="hidden" name="codigo" value="${cliente.codigo}">
+                        <input type="hidden" name="acao" value="editar">
                     </form>
                     <div class="mdl-card__supporting-text mdl-cell mdl-cell--6-col">
 
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input form="cadastro" class="mdl-textfield__input" type="text" id="sample3" value="Abraão Mesaque da Silva">
-                            <label form="cadastro" class="mdl-textfield__label" for="sample3">Nome</label>
+                            <input form="cadastro" class="mdl-textfield__input" type="text" id="nome" name="nome" value="${cliente.nome}">
+                            <label form="cadastro" class="mdl-textfield__label" for="nome">Nome</label>
                         </div>
 
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input form="cadastro" class="mdl-textfield__input" type="text" id="sample3" value="abraãoMesaque@gmail.com">
-                            <label form="cadastro" class="mdl-textfield__label" for="sample3">E-mail</label>
+                            <input form="cadastro" class="mdl-textfield__input" type="text" id="email" name="email" value="${cliente.email}">
+                            <label form="cadastro" class="mdl-textfield__label" for="email">E-mail</label>
                         </div>
 
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input form="cadastro" class="mdl-textfield__input" type="text" id="sample3" value="(51) 98179-4852">
-                            <label form="cadastro" class="mdl-textfield__label" for="sample3">Telefone</label>
+                            <input form="cadastro" class="mdl-textfield__input" type="text" id="telefone" name="telefone" value="${cliente.telefone}">
+                            <label form="cadastro" class="mdl-textfield__label" for="telefone">Telefone</label>
                         </div>
 
                     </div>
