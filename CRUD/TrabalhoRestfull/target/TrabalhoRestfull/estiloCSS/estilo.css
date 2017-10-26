@@ -1,0 +1,17 @@
+.mdl-layout {
+	align-items: center;
+  justify-content: center;
+}
+.mdl-layout__content {
+	padding: 24px;
+	flex: none;
+}
+
+
+.logoLogin{
+	width: 100%;
+}
+
+a{
+	text-decoration: none;
+}
