@@ -91,7 +91,7 @@ limitations under the License
                     <span class="visuallyhidden">Accounts</span>
                 </button>
                 <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
-                    <a href="login.html">
+                    <a href="ServletCliente?acao=sair">
                         <li class="mdl-menu__item">Sair</li>
                     </a>
                     <!--<li class="mdl-menu__item"><i class="material-icons">add</i>Add another account...</li>-->
