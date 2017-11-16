@@ -2,10 +2,8 @@ package br.ufsm.csi.seguranca.controller;
 
 import br.ufsm.csi.seguranca.dao.HibernateDAO;
 import br.ufsm.csi.seguranca.model.Cliente;
-import br.ufsm.csi.seguranca.model.Log;
 import br.ufsm.csi.seguranca.model.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -13,10 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.io.UnsupportedEncodingException;
-import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.sql.Time;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,24 +22,62 @@ public class ClienteController {
     @Autowired
     private HibernateDAO hibernateDAO;
 
-    /*
     @Transactional
-    @RequestMapping(value = "clienteNovo", method = RequestMethod.POST)
+    @RequestMapping("clientes.html")
+    public String getClientePage() {
+        return "redirect:listaClientes.html";
+    }
+
+    @Transactional
+    @RequestMapping("novoCliente.html")
+    public String getNovoClientePage() {
+        return "novoCliente";
+    }
+
+    @Transactional
+    @RequestMapping("alterarCliente.html")
+    public String getAlterarClientePage(Model model, Cliente cliente) {
+        model.addAttribute(cliente);
+        return "alterarCliente";
+    }
+
+    @Transactional
+    @RequestMapping(value = "criaCliente.html", method = RequestMethod.POST)
     public String criaCliente(Cliente cliente) throws NoSuchAlgorithmException, UnsupportedEncodingException {
         System.out.println("Chamou AQ");
-        hibernateDAO.criaObjeto(cliente);
-        return "Cliente";
-    }
-    */
+        if (cliente.getCodigo() == null) {
+            hibernateDAO.criaObjeto(cliente);
+        } else {
+            Cliente clientePersistente = (Cliente) hibernateDAO.carregaObjeto(Cliente.class, cliente.getCodigo());
+            clientePersistente.setTelefone(cliente.getTelefone());
+            clientePersistente.setNome(cliente.getNome());
+            clientePersistente.setCodigo(cliente.getCodigo());
+            clientePersistente.setEmail(cliente.getEmail());
+        }
 
-    @RequestMapping(value = "cliente-novo.html")
-    public String criaCliente()  {
-        System.out.println("Chamou AQ");
-        return "hello";
+        return "redirect:listaClientes.html";
     }
 
     @Transactional
-    @RequestMapping("login.html")
+    @RequestMapping("listaClientes.html")
+    public String listaClientes(Model model) {
+        Map<String, String> m = new HashMap<>();
+        m.put("nome", "");
+        model.addAttribute("clientes", hibernateDAO.listaObjetos(Cliente.class, m, null, null, false));
+        return "clientes";
+    }
+
+    @Transactional
+    @RequestMapping(value = "remove-cliente.html", method = RequestMethod.POST)
+    public String removeCliente(Long codigo) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+        Cliente cliente = (Cliente) hibernateDAO.carregaObjeto(Cliente.class, codigo);
+        hibernateDAO.removeObjeto(cliente);
+        return "Cliente";
+    }
+
+
+    @Transactional
+    @RequestMapping("login2.html")
     public String login(String login, String senha) throws UnsupportedEncodingException, NoSuchAlgorithmException {
 //        Map<String, Object> map = new HashMap<>();
 //        map.put("login", login);
@@ -64,56 +97,5 @@ public class ClienteController {
         }
     }
 
-    @Transactional
-    @RequestMapping("cria-log.priv")
-    public String criaLog(Long idUsuario,
-                          Long idObjeto,
-                          String classe,
-                          @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm") Date dataHora) throws ClassNotFoundException {
-        Usuario usuario = (Usuario) hibernateDAO.carregaObjeto(Usuario.class, idUsuario);
-        Log log = new Log();
-        log.setClasse(Class.forName(classe));
-        log.setIdObjeto(idObjeto);
-        log.setDataHora(dataHora);
-        log.setUsuario(usuario);
-        hibernateDAO.criaObjeto(log);
-        return "log";
-    }
-
-    @Transactional
-    @RequestMapping("lista-usuarios.html")
-    public String listaUsuarios(Model model, String nome, String login) {
-        Map<String, String> m = new HashMap<>();
-        if (nome != null && !nome.isEmpty()) {
-            m.put("nome", nome);
-        }
-        if (login != null && !login.isEmpty()) {
-            m.put("login", login);
-        }
-        model.addAttribute("usuarios", hibernateDAO.listaObjetos(Usuario.class, m, null, null, false));
-        return "lista-usuarios";
-    }
-/*
-    public static void main(String[] args){
-        Cliente cli = new Cliente();
-
-        cli.setEmail("vinicios@gmail.com");
-        cli.setNome("Vinicios Tomazetti");
-        cli.setTelefone("5596037050");
-
-        ClienteController cc = new ClienteController();
-
-        String gerado = null;
-        try {
-            //gerado = cc.criaCliente(cli);
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-
-        System.out.println(gerado);
-    }
-    */
 
 }

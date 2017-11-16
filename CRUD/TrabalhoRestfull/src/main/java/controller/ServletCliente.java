@@ -2,7 +2,6 @@ package controller;
 
 import dao.ClienteDAO;
 import model.Cliente;
-import util.Utilitarios;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

@@ -82,7 +82,8 @@ public class Veiculo {
         this.codigo = codigo;
     }
 
-    @Column(name="codCliente")
+    @ManyToOne
+    @JoinColumn(name = "cod_cliente")
     public Cliente getCliente() {
         return cliente;
     }

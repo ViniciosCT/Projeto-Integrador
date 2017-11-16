@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal">
-    <data-source name="@localhost" uuid="180fb521-67ee-462f-975e-8cc08266b3d4">
-      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
-      <introspection-schemas>PUBLIC:PUBLIC</introspection-schemas>
+    <data-source name="GerenciadorQualitat@localhost" uuid="747816bb-bddd-442c-8de3-4ae1b4ae1d87">
+      <database-info product="PostgreSQL" version="9.3.5" jdbc-version="4.0" driver-name="PostgreSQL Native Driver" driver-version="PostgreSQL 9.3 JDBC4 (build 1101)">
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>postgres</user-name>
+      <introspection-schemas>GerenciadorQualitat:public</introspection-schemas>
     </data-source>
   </component>
 </project>

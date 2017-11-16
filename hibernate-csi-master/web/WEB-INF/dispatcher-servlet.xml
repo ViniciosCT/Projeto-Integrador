@@ -47,7 +47,7 @@
     <bean name="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
         <property name="url" value="jdbc:postgresql://localhost/GerenciadorQualitat" />
         <property name="driverClassName" value="org.postgresql.Driver"/>
-        <property name="username" value="ViniciosCT" />
+        <property name="username" value="postgres" />
         <property name="password" value="17141307" />
         <property name="removeAbandonedOnBorrow" value="true" />
         <property name="maxIdle" value="1" />
