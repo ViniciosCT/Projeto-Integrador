@@ -12,7 +12,7 @@ public class OrdemServico {
     private String descricaoReparos;
     private int codigo;
     private Fase faseAtual;
-    private ArrayList<Fase> fases;
+    //private ArrayList<Fase> fases;
     private Orcamento orcamento;
 
 
@@ -46,7 +46,7 @@ public class OrdemServico {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_usuario")
     @SequenceGenerator(name = "seq_usuario", sequenceName = "seq_usuario")
-    @Column(name="id")
+    @Column(name="codOrdemServico")
     public int getCodigo() {
         return codigo;
     }
@@ -55,7 +55,8 @@ public class OrdemServico {
         this.codigo = codigo;
     }
 
-    @Column(name = "faseAtual")
+    @ManyToOne
+    @JoinColumn(name = "codFase")
     public Fase getFaseAtual() {
         return faseAtual;
     }
@@ -64,7 +65,8 @@ public class OrdemServico {
         this.faseAtual = faseAtual;
     }
 
-    @JoinColumn(name="id")
+    @ManyToOne
+    @JoinColumn(name = "codOrcamento")
     public Orcamento getOrcamento() {
         return orcamento;
     }
@@ -73,12 +75,12 @@ public class OrdemServico {
         this.orcamento = orcamento;
     }
 
-    @ManyToMany(mappedBy="ordens")
-    public ArrayList<Fase> getFases() {
-        return fases;
-    }
-
-    public void setFases(ArrayList<Fase> fases) {
-        this.fases = fases;
-    }
+//    @ManyToMany(mappedBy="ordens")
+//    public ArrayList<Fase> getFases() {
+//        return fases;
+//    }
+//
+//    public void setFases(ArrayList<Fase> fases) {
+//        this.fases = fases;
+//    }
 }

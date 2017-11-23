@@ -4,10 +4,11 @@
 <hibernate-configuration>
     <session-factory>
         <mapping class="br.ufsm.csi.seguranca.model.Cliente" />
-        <!-- <mapping class="br.ufsm.csi.seguranca.model.Veiculo" />
-         <mapping class="br.ufsm.csi.seguranca.model.Orcamento" />
-         <mapping class="br.ufsm.csi.seguranca.model.OrdemServico" />
-         <mapping class="br.ufsm.csi.seguranca.model.Fase" /> -->
+        <mapping class="br.ufsm.csi.seguranca.model.Veiculo" />
+        <mapping class="br.ufsm.csi.seguranca.model.Orcamento" />
+        <mapping class="br.ufsm.csi.seguranca.model.Fase" />
+        <mapping class="br.ufsm.csi.seguranca.model.OrdemServico" />
+        <mapping class="br.ufsm.csi.seguranca.model.OSXFase" />
         <mapping class="br.ufsm.csi.seguranca.model.Funcionario" />
     </session-factory>
 </hibernate-configuration>

@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!doctype html>
 <!--
 Material Design Lite
@@ -81,7 +83,7 @@ limitations under the License
         <header class="demo-drawer-header">
             <img src="images/logo.png" alt="Logo da empresa Qualitat" class="logoLogin">
             <div class="demo-avatar-dropdown">
-                <span>Iorhann Silva</span>
+                <span>${usuarioLogado.nome}</span>
                 <div class="mdl-layout-spacer"></div>
                 <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
                     <i class="material-icons" role="presentation">arrow_drop_down</i>
@@ -114,16 +116,16 @@ limitations under the License
 
                     <div class="mdl-card__supporting-text mdl-cell mdl-cell--6-col">
                         <h5>Quantidade de veículos na loja:</h5>
-                        <h5>124</h5>
+                        <h5>${qtdVeiculos}</h5>
                     </div>
 
                     <div class="mdl-card__supporting-text mdl-cell mdl-cell--6-col">
                         <h5>Faturamento estimado:</h5>
-                        <h5>R$95.656,00</h5>
+                        <h5>R$${faturamento}</h5>
                     </div>
                 </div>
                 <div class="mdl-card__actions mdl-card--border">
-                    <a href="index.html"><button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Atualizar</button></a>
+                    <a href="paginaInicial.html"><button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Atualizar</button></a>
                 </div>
             </div>
 

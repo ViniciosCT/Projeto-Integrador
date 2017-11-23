@@ -68,7 +68,7 @@ public class Orcamento {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_usuario")
     @SequenceGenerator(name = "seq_usuario", sequenceName = "seq_usuario")
-    @Column(name="id")
+    @Column(name="codOrcamento")
     public int getCodigo() {
         return codigo;
     }
@@ -77,7 +77,8 @@ public class Orcamento {
         this.codigo = codigo;
     }
 
-    @Column(name="codVeiculo")
+    @ManyToOne
+    @JoinColumn(name = "codVeiculo")
     public Veiculo getVeiculo() {
         return veiculo;
     }

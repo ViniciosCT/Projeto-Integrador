@@ -1,12 +1,11 @@
 package br.ufsm.csi.seguranca.dao;
 
+import br.ufsm.csi.seguranca.model.OrdemServico;
 import br.ufsm.csi.seguranca.model.Usuario;
 import org.hibernate.Criteria;
 import org.hibernate.LockMode;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.DetachedCriteria;
-import org.hibernate.criterion.Order;
-import org.hibernate.criterion.Restrictions;
+import org.hibernate.criterion.*;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -35,7 +34,20 @@ public class HibernateDAO {
         sessionFactory.getCurrentSession().remove(o);
     }
 
+    public Number faturamento(String coluna){
+        DetachedCriteria detachedCriteria = DetachedCriteria.forClass(OrdemServico.class);
+        DetachedCriteria dCritOrcamento = detachedCriteria.createCriteria("orcamento");
+        dCritOrcamento.setProjection(Projections.sum(coluna));
+        Criteria criteria = detachedCriteria.getExecutableCriteria(sessionFactory.getCurrentSession());
+        return (Number) criteria.uniqueResult();
+    }
 
+    public Number conta(Class classe){
+        DetachedCriteria detachedCriteria = DetachedCriteria.forClass(classe);
+        detachedCriteria.setProjection(Projections.rowCount());
+        Criteria criteria = detachedCriteria.getExecutableCriteria(sessionFactory.getCurrentSession());
+        return (Number) criteria.uniqueResult();
+    }
 
     public Collection<Object> listaObjetos(Class classe,
                                            Map<String, String> likeMap,

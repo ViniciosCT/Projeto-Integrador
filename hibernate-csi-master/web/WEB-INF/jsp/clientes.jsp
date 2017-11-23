@@ -83,7 +83,7 @@ limitations under the License
         <header class="demo-drawer-header">
             <img src="images/logo.png" alt="Logo da empresa Qualitat" class="logoLogin">
             <div class="demo-avatar-dropdown">
-                <span>Iorhann Silva</span>
+                <span>${usuarioLogado.nome}</span>
                 <div class="mdl-layout-spacer"></div>
                 <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
                     <i class="material-icons" role="presentation">arrow_drop_down</i>

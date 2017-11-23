@@ -100,20 +100,23 @@ limitations under the License
           <h2 class="mdl-card__title-text">Login</h2>
         </div>
         <div class="mdl-card__supporting-text">
-          <form action="#">
+          <form action="login.html" method="post" id="login">
             <div class="mdl-textfield mdl-js-textfield">
-              <input class="mdl-textfield__input" type="text" id="username" />
+              <input class="mdl-textfield__input" type="text" id="username" name="login"/>
               <label class="mdl-textfield__label" for="username">Usuário</label>
             </div>
             <div class="mdl-textfield mdl-js-textfield">
-              <input class="mdl-textfield__input" type="password" id="userpass" />
+              <input class="mdl-textfield__input" type="password" id="userpass" name="senha"/>
               <label class="mdl-textfield__label" for="userpass">Senha</label>
             </div>
           </form>
         </div>
         <div class="mdl-card__actions mdl-card--border">
-          <a href="login.html"><button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Entrar</button></a>
+          <button form="login" type="submit" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Entrar</button>
           <a href="#">Esqueci minha senha</a>
+          <c:if test="${not empty msgDoServidor}">
+            <p>Dados incorretos! </p>
+          </c:if>
         </div>
       </div>
     </div>

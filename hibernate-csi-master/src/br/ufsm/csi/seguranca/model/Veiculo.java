@@ -83,7 +83,7 @@ public class Veiculo {
     }
 
     @ManyToOne
-    @JoinColumn(name = "cod_cliente")
+    @JoinColumn(name = "codCliente")
     public Cliente getCliente() {
         return cliente;
     }

@@ -1,6 +1,7 @@
 package br.ufsm.csi.seguranca.controller;
 
 import br.ufsm.csi.seguranca.dao.HibernateDAO;
+import br.ufsm.csi.seguranca.model.Funcionario;
 import br.ufsm.csi.seguranca.model.Log;
 import br.ufsm.csi.seguranca.model.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,9 +11,11 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpSession;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -29,13 +32,27 @@ public class UsuarioController {
 
     @Transactional
     @RequestMapping("login.html")
-    public String login() {
-        return "paginaInicial";
+    public String login(String login, String senha, Model model, HttpSession session) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("login", login);
+        map.put("senha", senha);
+        Collection funcionarios = hibernateDAO.listaObjetosEquals(Funcionario.class, map);
+        if (funcionarios == null || funcionarios.isEmpty()) {
+            model.addAttribute("msgDoServidor", "acesso-negado");
+            return "../../index";
+        } else {
+            System.out.println("Nome: " + ((Funcionario) funcionarios.toArray()[0]).getNome() );
+            session.setAttribute("usuarioLogado", ((Funcionario) funcionarios.toArray()[0]) );
+            return "paginaInicial";
+        }
+
     }
 
     @Transactional
     @RequestMapping("sair.html")
-    public String sair() {
+    public String sair(HttpSession session) {
+        session.removeAttribute("usuarioLogado");
         return "../../index";
     }
 //

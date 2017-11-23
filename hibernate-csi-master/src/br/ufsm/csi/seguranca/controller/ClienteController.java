@@ -12,8 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 public class ClienteController {
@@ -46,6 +45,7 @@ public class ClienteController {
     public String criaCliente(Cliente cliente) throws NoSuchAlgorithmException, UnsupportedEncodingException {
         System.out.println("Chamou AQ");
         if (cliente.getCodigo() == null) {
+            cliente.setDataCadastro(new Date());
             hibernateDAO.criaObjeto(cliente);
         } else {
             Cliente clientePersistente = (Cliente) hibernateDAO.carregaObjeto(Cliente.class, cliente.getCodigo());
@@ -63,7 +63,8 @@ public class ClienteController {
     public String listaClientes(Model model) {
         Map<String, String> m = new HashMap<>();
         m.put("nome", "");
-        model.addAttribute("clientes", hibernateDAO.listaObjetos(Cliente.class, m, null, null, false));
+        Collection<Object> clientesLista = hibernateDAO.listaObjetos(Cliente.class, m, null, null, false);
+        model.addAttribute("clientes", clientesLista);
         return "clientes";
     }
 

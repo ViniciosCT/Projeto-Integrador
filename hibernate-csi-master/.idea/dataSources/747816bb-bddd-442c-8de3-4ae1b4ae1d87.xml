@@ -75,8 +75,8 @@
     </database>
     <schema id="25" parent="2" name="public">
       <ObjectId>2200</ObjectId>
-      <IntrospectionTimestamp>2017-10-26.16:52:37.467</IntrospectionTimestamp>
-      <IntrospectionStateNumber>1224</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2017-11-21.17:13:23.847</IntrospectionTimestamp>
+      <IntrospectionStateNumber>1248</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -95,25 +95,45 @@
     <schema id="30" parent="2" name="information_schema">
       <ObjectId>11480</ObjectId>
     </schema>
-    <sequence id="31" parent="25" name="cliente_codcliente_seq">
+    <sequence id="31" parent="25" name="seq_usuario">
+      <ObjectId>66941</ObjectId>
+      <StateNumber>1184</StateNumber>
+    </sequence>
+    <sequence id="32" parent="25" name="cliente_codcliente_seq">
       <ObjectId>66951</ObjectId>
       <StateNumber>1191</StateNumber>
       <SequenceIdentity>1</SequenceIdentity>
       <BelongsToColumn>1</BelongsToColumn>
     </sequence>
-    <sequence id="32" parent="25" name="seq_usuario">
-      <ObjectId>66941</ObjectId>
-      <StateNumber>1184</StateNumber>
-    </sequence>
     <table id="33" parent="25" name="cliente">
       <ObjectId>66953</ObjectId>
-      <StateNumber>1224</StateNumber>
+      <StateNumber>1239</StateNumber>
     </table>
-    <table id="34" parent="25" name="funcionario">
+    <table id="34" parent="25" name="fase">
+      <ObjectId>66985</ObjectId>
+      <StateNumber>1247</StateNumber>
+    </table>
+    <table id="35" parent="25" name="funcionario">
       <ObjectId>66933</ObjectId>
       <StateNumber>1183</StateNumber>
     </table>
-    <column id="35" parent="33" name="codcliente">
+    <table id="36" parent="25" name="orcamento">
+      <ObjectId>66975</ObjectId>
+      <StateNumber>1246</StateNumber>
+    </table>
+    <table id="37" parent="25" name="ordemservico">
+      <ObjectId>66990</ObjectId>
+      <StateNumber>1248</StateNumber>
+    </table>
+    <table id="38" parent="25" name="osxfase">
+      <ObjectId>66995</ObjectId>
+      <StateNumber>1248</StateNumber>
+    </table>
+    <table id="39" parent="25" name="veiculo">
+      <ObjectId>66962</ObjectId>
+      <StateNumber>1241</StateNumber>
+    </table>
+    <column id="40" parent="33" name="codcliente">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
@@ -121,68 +141,317 @@
       <SequenceName>cliente_codcliente_seq</SequenceName>
       <DefaultExpression>nextval(&apos;cliente_codcliente_seq&apos;::regclass)</DefaultExpression>
     </column>
-    <column id="36" parent="33" name="nome">
+    <column id="41" parent="33" name="nome">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
       <StateNumber>1191</StateNumber>
     </column>
-    <column id="37" parent="33" name="email">
+    <column id="42" parent="33" name="email">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
       <StateNumber>1191</StateNumber>
     </column>
-    <column id="38" parent="33" name="telefone">
+    <column id="43" parent="33" name="telefone">
       <Position>4</Position>
       <DataType>varchar(255)|0</DataType>
       <StateNumber>1191</StateNumber>
     </column>
-    <column id="39" parent="33" name="cadastro">
+    <column id="44" parent="33" name="cadastro">
       <Position>5</Position>
       <DataType>timestamp|0</DataType>
       <StateNumber>1224</StateNumber>
     </column>
-    <index id="40" parent="33" name="cliente_pkey">
+    <index id="45" parent="33" name="cliente_pkey">
       <ObjectId>66960</ObjectId>
       <ColNames>codcliente</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="41" parent="33" name="cliente_pkey">
+    <key id="46" parent="33" name="cliente_pkey">
       <ObjectId>66961</ObjectId>
       <ColNames>codcliente</ColNames>
       <UnderlyingIndexName>cliente_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="42" parent="34" name="id">
+    <column id="47" parent="34" name="codfase">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1242</StateNumber>
+    </column>
+    <column id="48" parent="34" name="nome">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+      <StateNumber>1242</StateNumber>
+    </column>
+    <index id="49" parent="34" name="fase_pkey">
+      <ObjectId>66988</ObjectId>
+      <ColNames>codfase</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="50" parent="34" name="fase_pkey">
+      <ObjectId>66989</ObjectId>
+      <ColNames>codfase</ColNames>
+      <UnderlyingIndexName>fase_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="51" parent="35" name="id">
       <Position>1</Position>
       <DataType>bigint|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>1183</StateNumber>
     </column>
-    <column id="43" parent="34" name="login">
+    <column id="52" parent="35" name="login">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
       <StateNumber>1183</StateNumber>
     </column>
-    <column id="44" parent="34" name="nome">
+    <column id="53" parent="35" name="nome">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
       <StateNumber>1183</StateNumber>
     </column>
-    <column id="45" parent="34" name="senha">
+    <column id="54" parent="35" name="senha">
       <Position>4</Position>
       <DataType>varchar(255)|0</DataType>
       <StateNumber>1183</StateNumber>
     </column>
-    <index id="46" parent="34" name="funcionario_pkey">
+    <index id="55" parent="35" name="funcionario_pkey">
       <ObjectId>66939</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="47" parent="34" name="funcionario_pkey">
+    <key id="56" parent="35" name="funcionario_pkey">
       <ObjectId>66940</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>funcionario_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
+    <column id="57" parent="36" name="codorcamento">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1240</StateNumber>
+    </column>
+    <column id="58" parent="36" name="descricaoreparos">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+      <StateNumber>1240</StateNumber>
+    </column>
+    <column id="59" parent="36" name="entrada">
+      <Position>3</Position>
+      <DataType>timestamp|0</DataType>
+      <StateNumber>1240</StateNumber>
+    </column>
+    <column id="60" parent="36" name="valortotal">
+      <Position>4</Position>
+      <DataType>double precision|0</DataType>
+      <StateNumber>1240</StateNumber>
+    </column>
+    <column id="61" parent="36" name="valortotalmo">
+      <Position>5</Position>
+      <DataType>double precision|0</DataType>
+      <StateNumber>1240</StateNumber>
+    </column>
+    <column id="62" parent="36" name="valortotalpecas">
+      <Position>6</Position>
+      <DataType>double precision|0</DataType>
+      <StateNumber>1240</StateNumber>
+    </column>
+    <column id="63" parent="36" name="codveiculo">
+      <Position>7</Position>
+      <DataType>integer|0</DataType>
+      <StateNumber>1240</StateNumber>
+    </column>
+    <index id="64" parent="36" name="orcamento_pkey">
+      <ObjectId>66978</ObjectId>
+      <ColNames>codorcamento</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="65" parent="36" name="orcamento_pkey">
+      <ObjectId>66979</ObjectId>
+      <ColNames>codorcamento</ColNames>
+      <UnderlyingIndexName>orcamento_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="66" parent="36" name="fkgc7h49ljskdfkomqcitxhlm3j">
+      <ObjectId>66980</ObjectId>
+      <ColNames>codveiculo</ColNames>
+      <RefTableId>66962</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>veiculo</RefTableName>
+      <RefKeyName>veiculo_pkey</RefKeyName>
+      <RefColNames>codveiculo</RefColNames>
+    </foreign-key>
+    <column id="67" parent="37" name="codordemservico">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1243</StateNumber>
+    </column>
+    <column id="68" parent="37" name="dataentrada">
+      <Position>2</Position>
+      <DataType>timestamp|0</DataType>
+      <StateNumber>1243</StateNumber>
+    </column>
+    <column id="69" parent="37" name="descricaoreparos">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+      <StateNumber>1243</StateNumber>
+    </column>
+    <column id="70" parent="37" name="codfase">
+      <Position>4</Position>
+      <DataType>integer|0</DataType>
+      <StateNumber>1243</StateNumber>
+    </column>
+    <column id="71" parent="37" name="codorcamento">
+      <Position>5</Position>
+      <DataType>integer|0</DataType>
+      <StateNumber>1243</StateNumber>
+    </column>
+    <index id="72" parent="37" name="ordemservico_pkey">
+      <ObjectId>66993</ObjectId>
+      <ColNames>codordemservico</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="73" parent="37" name="ordemservico_pkey">
+      <ObjectId>66994</ObjectId>
+      <ColNames>codordemservico</ColNames>
+      <UnderlyingIndexName>ordemservico_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="74" parent="37" name="fkcng44xpsjvhnyucqvik8l8s35">
+      <ObjectId>67000</ObjectId>
+      <ColNames>codfase</ColNames>
+      <RefTableId>66985</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>fase</RefTableName>
+      <RefKeyName>fase_pkey</RefKeyName>
+      <RefColNames>codfase</RefColNames>
+    </foreign-key>
+    <foreign-key id="75" parent="37" name="fk6vfqt7lya3c0a6nvj2mmd91pa">
+      <ObjectId>67005</ObjectId>
+      <ColNames>codorcamento</ColNames>
+      <RefTableId>66975</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>orcamento</RefTableName>
+      <RefKeyName>orcamento_pkey</RefKeyName>
+      <RefColNames>codorcamento</RefColNames>
+    </foreign-key>
+    <column id="76" parent="38" name="codosxfase">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1244</StateNumber>
+    </column>
+    <column id="77" parent="38" name="tempofinal">
+      <Position>2</Position>
+      <DataType>timestamp|0</DataType>
+      <StateNumber>1244</StateNumber>
+    </column>
+    <column id="78" parent="38" name="tempoinicial">
+      <Position>3</Position>
+      <DataType>timestamp|0</DataType>
+      <StateNumber>1244</StateNumber>
+    </column>
+    <column id="79" parent="38" name="codfase">
+      <Position>4</Position>
+      <DataType>integer|0</DataType>
+      <StateNumber>1244</StateNumber>
+    </column>
+    <column id="80" parent="38" name="codordemservico">
+      <Position>5</Position>
+      <DataType>integer|0</DataType>
+      <StateNumber>1244</StateNumber>
+    </column>
+    <index id="81" parent="38" name="osxfase_pkey">
+      <ObjectId>66998</ObjectId>
+      <ColNames>codosxfase</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="82" parent="38" name="osxfase_pkey">
+      <ObjectId>66999</ObjectId>
+      <ColNames>codosxfase</ColNames>
+      <UnderlyingIndexName>osxfase_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="83" parent="38" name="fkt441rx79sqewibrr5hmp5765x">
+      <ObjectId>67010</ObjectId>
+      <ColNames>codfase</ColNames>
+      <RefTableId>66985</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>fase</RefTableName>
+      <RefKeyName>fase_pkey</RefKeyName>
+      <RefColNames>codfase</RefColNames>
+    </foreign-key>
+    <foreign-key id="84" parent="38" name="fkntpnqsk6xkx3ykr3ii4fqpwpe">
+      <ObjectId>67015</ObjectId>
+      <ColNames>codordemservico</ColNames>
+      <RefTableId>66990</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>ordemservico</RefTableName>
+      <RefKeyName>ordemservico_pkey</RefKeyName>
+      <RefColNames>codordemservico</RefColNames>
+    </foreign-key>
+    <column id="85" parent="39" name="codveiculo">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1238</StateNumber>
+    </column>
+    <column id="86" parent="39" name="ano">
+      <Position>2</Position>
+      <DataType>integer|0</DataType>
+      <StateNumber>1238</StateNumber>
+    </column>
+    <column id="87" parent="39" name="combustivel">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+      <StateNumber>1238</StateNumber>
+    </column>
+    <column id="88" parent="39" name="cor">
+      <Position>4</Position>
+      <DataType>varchar(255)|0</DataType>
+      <StateNumber>1238</StateNumber>
+    </column>
+    <column id="89" parent="39" name="marca">
+      <Position>5</Position>
+      <DataType>varchar(255)|0</DataType>
+      <StateNumber>1238</StateNumber>
+    </column>
+    <column id="90" parent="39" name="modelo">
+      <Position>6</Position>
+      <DataType>varchar(255)|0</DataType>
+      <StateNumber>1238</StateNumber>
+    </column>
+    <column id="91" parent="39" name="placa">
+      <Position>7</Position>
+      <DataType>varchar(255)|0</DataType>
+      <StateNumber>1238</StateNumber>
+    </column>
+    <column id="92" parent="39" name="codcliente">
+      <Position>8</Position>
+      <DataType>bigint|0</DataType>
+      <StateNumber>1238</StateNumber>
+    </column>
+    <index id="93" parent="39" name="veiculo_pkey">
+      <ObjectId>66968</ObjectId>
+      <ColNames>codveiculo</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="94" parent="39" name="veiculo_pkey">
+      <ObjectId>66969</ObjectId>
+      <ColNames>codveiculo</ColNames>
+      <UnderlyingIndexName>veiculo_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="95" parent="39" name="fkg4sj1ikov0dowbce8pld2kkgi">
+      <ObjectId>66970</ObjectId>
+      <ColNames>codcliente</ColNames>
+      <RefTableId>66953</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>cliente</RefTableName>
+      <RefKeyName>cliente_pkey</RefKeyName>
+      <RefColNames>codcliente</RefColNames>
+    </foreign-key>
   </database-model>
 </dataSource>
