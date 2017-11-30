@@ -7,7 +7,7 @@ import java.util.Date;
 @Table(name="OSXFase")
 public class OSXFase {
 
-    private int codigo;
+    private Long codigo;
     private OrdemServico os;
     private Fase fase;
     private Date tempoInicial;
@@ -17,11 +17,11 @@ public class OSXFase {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_usuario")
     @SequenceGenerator(name = "seq_usuario", sequenceName = "seq_usuario")
     @Column(name="codOSXFase")
-    public int getCodigo() {
+    public Long getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
+    public void setCodigo(Long codigo) {
         this.codigo = codigo;
     }
 

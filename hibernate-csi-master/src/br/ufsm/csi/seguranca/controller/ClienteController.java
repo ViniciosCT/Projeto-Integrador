@@ -68,35 +68,35 @@ public class ClienteController {
         return "clientes";
     }
 
-    @Transactional
-    @RequestMapping(value = "remove-cliente.html", method = RequestMethod.POST)
-    public String removeCliente(Long codigo) throws NoSuchAlgorithmException, UnsupportedEncodingException {
-        Cliente cliente = (Cliente) hibernateDAO.carregaObjeto(Cliente.class, codigo);
-        hibernateDAO.removeObjeto(cliente);
-        return "Cliente";
-    }
+//    @Transactional
+//    @RequestMapping(value = "remove-cliente.html", method = RequestMethod.POST)
+//    public String removeCliente(Long codigo) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+//        Cliente cliente = (Cliente) hibernateDAO.carregaObjeto(Cliente.class, codigo);
+//        hibernateDAO.removeObjeto(cliente);
+//        return "Cliente";
+//    }
 
 
-    @Transactional
-    @RequestMapping("login2.html")
-    public String login(String login, String senha) throws UnsupportedEncodingException, NoSuchAlgorithmException {
-//        Map<String, Object> map = new HashMap<>();
-//        map.put("login", login);
-//        MessageDigest md = MessageDigest.getInstance("SHA-256");
-//        map.put("senha", md.digest(senha.getBytes("ISO-8859-1")));
-//        Collection usuarios = hibernateDAO.listaObjetosEquals(Usuario.class, map);
-//        if (usuarios == null || usuarios.isEmpty()) {
+//    @Transactional
+//    @RequestMapping("login2.html")
+//    public String login(String login, String senha) throws UnsupportedEncodingException, NoSuchAlgorithmException {
+////        Map<String, Object> map = new HashMap<>();
+////        map.put("login", login);
+////        MessageDigest md = MessageDigest.getInstance("SHA-256");
+////        map.put("senha", md.digest(senha.getBytes("ISO-8859-1")));
+////        Collection usuarios = hibernateDAO.listaObjetosEquals(Usuario.class, map);
+////        if (usuarios == null || usuarios.isEmpty()) {
+////            return "acesso-negado";
+////        } else {
+////            return "ok";
+////        }
+//        Usuario usuario = hibernateDAO.findUsuarioHQL(login, senha);
+//        if (usuario == null) {
 //            return "acesso-negado";
 //        } else {
 //            return "ok";
 //        }
-        Usuario usuario = hibernateDAO.findUsuarioHQL(login, senha);
-        if (usuario == null) {
-            return "acesso-negado";
-        } else {
-            return "ok";
-        }
-    }
+//    }
 
 
 }

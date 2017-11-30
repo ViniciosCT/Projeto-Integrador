@@ -7,12 +7,12 @@ import javax.persistence.*;
 public class Veiculo {
 
     private String placa;
-    private int ano;
+    private Long ano;
     private String marca;
     private String combustivel;
     private String modelo;
     private String cor;
-    private int codigo;
+    private Long codigo;
     private Cliente cliente;
 
     //Gerados:
@@ -26,11 +26,11 @@ public class Veiculo {
     }
 
     @Column(name = "ano")
-    public int getAno() {
+    public Long getAno() {
         return ano;
     }
 
-    public void setAno(int ano) {
+    public void setAno(Long ano) {
         this.ano = ano;
     }
 
@@ -74,11 +74,11 @@ public class Veiculo {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_usuario")
     @SequenceGenerator(name = "seq_usuario", sequenceName = "seq_usuario")
     @Column(name="codVeiculo")
-    public int getCodigo() {
+    public Long getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
+    public void setCodigo(Long codigo) {
         this.codigo = codigo;
     }
 

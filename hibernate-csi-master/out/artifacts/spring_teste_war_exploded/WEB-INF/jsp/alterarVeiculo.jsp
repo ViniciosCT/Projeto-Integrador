@@ -114,52 +114,54 @@ limitations under the License
                 </div>
                 <div class="mdl-grid demo-content">
 
-                    <form action="#" id="cadastro">
+                    <form action="criaVeiculo.html" id="cadastro" method="post">
+                        <input type="hidden" name="codCliente" value="${veiculo.cliente.codigo}">
+                        <input type="hidden" name="codigo" value="${veiculo.codigo}">
                     </form>
                     <div class="mdl-card__supporting-text mdl-cell mdl-cell--6-col">
 
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input form="cadastro" class="mdl-textfield__input" type="text" id="sample3" value="AAA-1111">
-                            <label form="cadastro" class="mdl-textfield__label" for="sample3">Placa</label>
+                            <input form="cadastro" class="mdl-textfield__input" type="text" id="placa" value="${veiculo.placa}" name="placa">
+                            <label form="cadastro" class="mdl-textfield__label" for="placa">Placa</label>
                         </div>
 
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input" type="number" pattern="-?[0-9]*(\.[0-9]+)?" id="sample4" value="2016">
-                            <label class="mdl-textfield__label" for="sample4">Ano</label>
+                            <input class="mdl-textfield__input" type="number" pattern="-?[0-9]*(\.[0-9]+)?" id="ano" value="${veiculo.ano}" name="ano">
+                            <label class="mdl-textfield__label" for="ano">Ano</label>
                             <span class="mdl-textfield__error">Este valor não é um numero!</span>
                         </div>
 
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input form="cadastro" class="mdl-textfield__input" type="text" id="sample3" value="ONIX">
-                            <label form="cadastro" class="mdl-textfield__label" for="sample3">Modelo</label>
+                            <input form="cadastro" class="mdl-textfield__input" type="text" id="modelo" value="${veiculo.modelo}" name="modelo">
+                            <label form="cadastro" class="mdl-textfield__label" for="modelo">Modelo</label>
                         </div>
 
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input form="cadastro" class="mdl-textfield__input" type="text" id="sample3" value="Chevrolet">
-                            <label form="cadastro" class="mdl-textfield__label" for="sample3">Marca</label>
+                            <input form="cadastro" class="mdl-textfield__input" type="text" id="marca" value="${veiculo.marca}" name="marca">
+                            <label form="cadastro" class="mdl-textfield__label" for="marca">Marca</label>
                         </div>
 
                     </div>
                     <div class="mdl-card__supporting-text mdl-cell mdl-cell--6-col">
 
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input form="cadastro" class="mdl-textfield__input" type="text" id="sample3" value="Flex">
-                            <label form="cadastro" class="mdl-textfield__label" for="sample3">Combustível</label>
+                            <input form="cadastro" class="mdl-textfield__input" type="text" id="combustivel" value="${veiculo.combustivel}" name="combustivel">
+                            <label form="cadastro" class="mdl-textfield__label" for="combustivel">Combustível</label>
                         </div>
 
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input form="cadastro" class="mdl-textfield__input" type="text" id="sample3" value="Prata">
-                            <label form="cadastro" class="mdl-textfield__label" for="sample3">Cor</label>
+                            <input form="cadastro" class="mdl-textfield__input" type="text" id="cor" value="${veiculo.cor}" name="cor">
+                            <label form="cadastro" class="mdl-textfield__label" for="cor">Cor</label>
                         </div>
 
                         <p>Cliente:</p>
-                        <p>Vinícios Camponogara Tomazetti</p>
+                        <p>${veiculo.cliente.nome}</p>
 
                     </div>
 
                 </div>
                 <div class="mdl-card__actions mdl-card--border">
-                    <input form="cadastro" type="submit" class="mdl-color-text--white mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"></input>
+                    <button form="cadastro" type="submit" class="mdl-color-text--white mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Alterar</button>
                 </div>
             </div>
 

@@ -1,5 +1,6 @@
 package br.ufsm.csi.seguranca.dao;
 
+import br.ufsm.csi.seguranca.model.Orcamento;
 import br.ufsm.csi.seguranca.model.OrdemServico;
 import br.ufsm.csi.seguranca.model.Usuario;
 import org.hibernate.Criteria;
@@ -35,11 +36,12 @@ public class HibernateDAO {
     }
 
     public Number faturamento(String coluna){
-        DetachedCriteria detachedCriteria = DetachedCriteria.forClass(OrdemServico.class);
-        DetachedCriteria dCritOrcamento = detachedCriteria.createCriteria("orcamento");
-        dCritOrcamento.setProjection(Projections.sum(coluna));
-        Criteria criteria = detachedCriteria.getExecutableCriteria(sessionFactory.getCurrentSession());
-        return (Number) criteria.uniqueResult();
+        return (Number) sessionFactory.getCurrentSession().createSQLQuery("  SELECT\n" +
+                "    SUM(" + coluna + ")\n" +
+                "  FROM\n" +
+                "    ordemservico,orcamento\n" +
+                "  WHERE\n" +
+                "    ordemservico.codorcamento = orcamento.codorcamento").list().get(0);
     }
 
     public Number conta(Class classe){

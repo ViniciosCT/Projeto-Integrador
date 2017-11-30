@@ -10,7 +10,7 @@ public class OrdemServico {
 
     private Date dataEntrada;
     private String descricaoReparos;
-    private int codigo;
+    private Long codigo;
     private Fase faseAtual;
     //private ArrayList<Fase> fases;
     private Orcamento orcamento;
@@ -47,11 +47,11 @@ public class OrdemServico {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_usuario")
     @SequenceGenerator(name = "seq_usuario", sequenceName = "seq_usuario")
     @Column(name="codOrdemServico")
-    public int getCodigo() {
+    public Long getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
+    public void setCodigo(Long codigo) {
         this.codigo = codigo;
     }
 

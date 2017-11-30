@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class Fase {
 
     private String nome;
-    private int codigo;
+    private Long codigo;
     //private ArrayList<OrdemServico> ordens;
 
     public double pegaFaturamento(){
@@ -33,11 +33,11 @@ public class Fase {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_usuario")
     @SequenceGenerator(name = "seq_usuario", sequenceName = "seq_usuario")
     @Column(name="codFase")
-    public int getCodigo() {
+    public Long getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
+    public void setCodigo(Long codigo) {
         this.codigo = codigo;
     }
 

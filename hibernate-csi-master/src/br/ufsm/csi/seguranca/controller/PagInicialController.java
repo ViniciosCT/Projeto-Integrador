@@ -22,12 +22,8 @@ public class PagInicialController {
     @RequestMapping("paginaInicial.html")
     public String getPagInicialPage(Model model) {
 
-
         model.addAttribute("faturamento", hibernateDAO.faturamento("valorTotal"));
         model.addAttribute("qtdVeiculos", hibernateDAO.conta(OrdemServico.class));
-
-        System.out.println("Valor total: " + hibernateDAO.faturamento("valorTotal"));
-        System.out.println("Quantidade total: " + hibernateDAO.conta(OrdemServico.class));
 
         return "paginaInicial";
     }

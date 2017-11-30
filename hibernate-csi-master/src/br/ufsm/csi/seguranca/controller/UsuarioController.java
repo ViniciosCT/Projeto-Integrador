@@ -3,6 +3,7 @@ package br.ufsm.csi.seguranca.controller;
 import br.ufsm.csi.seguranca.dao.HibernateDAO;
 import br.ufsm.csi.seguranca.model.Funcionario;
 import br.ufsm.csi.seguranca.model.Log;
+import br.ufsm.csi.seguranca.model.OrdemServico;
 import br.ufsm.csi.seguranca.model.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -38,12 +39,19 @@ public class UsuarioController {
         map.put("login", login);
         map.put("senha", senha);
         Collection funcionarios = hibernateDAO.listaObjetosEquals(Funcionario.class, map);
+
         if (funcionarios == null || funcionarios.isEmpty()) {
+
             model.addAttribute("msgDoServidor", "acesso-negado");
+
             return "../../index";
         } else {
+
             System.out.println("Nome: " + ((Funcionario) funcionarios.toArray()[0]).getNome() );
             session.setAttribute("usuarioLogado", ((Funcionario) funcionarios.toArray()[0]) );
+            model.addAttribute("faturamento", hibernateDAO.faturamento("valorTotal"));
+            model.addAttribute("qtdVeiculos", hibernateDAO.conta(OrdemServico.class));
+
             return "paginaInicial";
         }
 

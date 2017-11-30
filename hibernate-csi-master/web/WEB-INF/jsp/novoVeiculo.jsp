@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <!--
 Material Design Lite
@@ -114,50 +115,50 @@ limitations under the License
                 </div>
                 <div class="mdl-grid demo-content">
 
-                    <form action="#" id="cadastro">
+                    <form action="criaVeiculo.html" id="cadastro" method="post">
                     </form>
                     <div class="mdl-card__supporting-text mdl-cell mdl-cell--6-col">
 
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input form="cadastro" class="mdl-textfield__input" type="text" id="sample3">
-                            <label form="cadastro" class="mdl-textfield__label" for="sample3">Placa</label>
+                            <input form="cadastro" class="mdl-textfield__input" type="text" id="placa" name="placa">
+                            <label form="cadastro" class="mdl-textfield__label" for="placa">Placa</label>
                         </div>
 
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input" type="number" pattern="-?[0-9]*(\.[0-9]+)?" id="sample4">
-                            <label class="mdl-textfield__label" for="sample4">Ano</label>
+                            <input class="mdl-textfield__input" type="number" pattern="-?[0-9]*(\.[0-9]+)?" id="ano" name="ano">
+                            <label class="mdl-textfield__label" for="ano">Ano</label>
                             <span class="mdl-textfield__error">Este valor não é um numero!</span>
                         </div>
 
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input form="cadastro" class="mdl-textfield__input" type="text" id="sample3">
-                            <label form="cadastro" class="mdl-textfield__label" for="sample3">Modelo</label>
+                            <input form="cadastro" class="mdl-textfield__input" type="text" id="modelo" name="modelo">
+                            <label form="cadastro" class="mdl-textfield__label" for="modelo">Modelo</label>
                         </div>
 
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input form="cadastro" class="mdl-textfield__input" type="text" id="sample3">
-                            <label form="cadastro" class="mdl-textfield__label" for="sample3">Marca</label>
+                            <input form="cadastro" class="mdl-textfield__input" type="text" id="marca" name="marca">
+                            <label form="cadastro" class="mdl-textfield__label" for="marca">Marca</label>
                         </div>
 
                     </div>
                     <div class="mdl-card__supporting-text mdl-cell mdl-cell--6-col">
 
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input form="cadastro" class="mdl-textfield__input" type="text" id="sample3">
-                            <label form="cadastro" class="mdl-textfield__label" for="sample3">Combustível</label>
+                            <input form="cadastro" class="mdl-textfield__input" type="text" id="combustivel" name="combustivel">
+                            <label form="cadastro" class="mdl-textfield__label" for="combustivel">Combustível</label>
                         </div>
 
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input form="cadastro" class="mdl-textfield__input" type="text" id="sample3">
-                            <label form="cadastro" class="mdl-textfield__label" for="sample3">Cor</label>
+                            <input form="cadastro" class="mdl-textfield__input" type="text" id="cor" name="cor">
+                            <label form="cadastro" class="mdl-textfield__label" for="cor">Cor</label>
                         </div>
 
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <select name="clientlist" form="cadastro" class="mdl-textfield__input" id="sample3">
-                                <option value="#">Selecione um Cliente</option>
-                                <option value="Ricardo da Silva">Ricardo da Silva</option>
-                                <option value="Vinícios Camponogara Tomazetti">Vinícios Camponogara Tomazetti</option>
-                                <option value="Pedro Paulo Cardoso">Pedro Paulo Cardoso</option>
+                            <select form="cadastro" class="mdl-textfield__input" name="codCliente">
+                                <option value="null">Selecione um Cliente</option>
+                                <c:forEach items="${clientes}" var="cli">
+                                    <option value="${cli.codigo}">${cli.nome}</option>
+                                </c:forEach>
                             </select>
                         </div>
 
@@ -165,7 +166,7 @@ limitations under the License
 
                 </div>
                 <div class="mdl-card__actions mdl-card--border">
-                    <input form="cadastro" type="submit" class="mdl-color-text--white mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"></input>
+                    <button form="cadastro" type="submit" class="mdl-color-text--white mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Criar</button>
                 </div>
             </div>
 
