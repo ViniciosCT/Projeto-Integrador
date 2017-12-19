@@ -11,11 +11,6 @@ public class Funcionario {
     private String login;
     private String senha;
 
-    public boolean autenticar() {
-        return false;
-    }
-
-    //Gerados:
     @Column(name="nome")
     public String getNome() {
         return nome;

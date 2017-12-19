@@ -1,20 +1,12 @@
 package br.ufsm.csi.seguranca.dao;
 
-import br.ufsm.csi.seguranca.model.Orcamento;
-import br.ufsm.csi.seguranca.model.OrdemServico;
-import br.ufsm.csi.seguranca.model.Usuario;
 import org.hibernate.Criteria;
-import org.hibernate.LockMode;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.*;
-import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.io.Serializable;
-import java.io.UnsupportedEncodingException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.Collection;
 import java.util.Map;
 
@@ -35,13 +27,10 @@ public class HibernateDAO {
         sessionFactory.getCurrentSession().remove(o);
     }
 
-    public Number faturamento(String coluna){
-        return (Number) sessionFactory.getCurrentSession().createSQLQuery("  SELECT\n" +
-                "    SUM(" + coluna + ")\n" +
-                "  FROM\n" +
-                "    ordemservico,orcamento\n" +
-                "  WHERE\n" +
-                "    ordemservico.codorcamento = orcamento.codorcamento").list().get(0);
+    public Number faturamento(){
+
+        return (Number) sessionFactory.getCurrentSession().createQuery("select sum(ordem.orcamento.valorTotal) " +
+                "from br.ufsm.csi.seguranca.model.OrdemServico as ordem ").list().get(0);
     }
 
     public Number conta(Class classe){
@@ -87,29 +76,6 @@ public class HibernateDAO {
 
     public Object carregaObjeto(Class classe, Serializable id) {
         return sessionFactory.getCurrentSession().get(classe, id);
-    }
-
-    public Usuario findUsuario(String login, String senha) throws NoSuchAlgorithmException, UnsupportedEncodingException {
-        MessageDigest md = MessageDigest.getInstance("SHA-256");
-        byte[] senhaSHA = md.digest(senha.getBytes("ISO-8859-1"));
-        DetachedCriteria detachedCriteria = DetachedCriteria.forClass(Usuario.class);
-        detachedCriteria.add(Restrictions.eq("login", login));
-        detachedCriteria.add(Restrictions.eq("senha", senhaSHA));
-        Criteria criteria = detachedCriteria.getExecutableCriteria(sessionFactory.getCurrentSession());
-        criteria.setMaxResults(10);
-        return (Usuario) criteria.uniqueResult();
-    }
-
-    public Usuario findUsuarioHQL(String login, String senha) throws NoSuchAlgorithmException, UnsupportedEncodingException {
-        MessageDigest md = MessageDigest.getInstance("SHA-256");
-        byte[] senhaSHA = md.digest(senha.getBytes("ISO-8859-1"));
-        Query q = sessionFactory.getCurrentSession().createQuery(
-                "select u from br.ufsm.csi.seguranca.model.Usuario as u " +
-                        "where u.login = :login and u.senha = :senha"
-        );
-        q.setParameter("login", login);
-        q.setParameter("senha", senhaSHA);
-        return (Usuario) q.uniqueResult();
     }
 
 }

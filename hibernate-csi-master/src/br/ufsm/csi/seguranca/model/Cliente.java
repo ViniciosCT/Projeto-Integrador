@@ -13,7 +13,6 @@ public class Cliente {
     private String email;
     private Long codigo;
 
-    //Gerados:
     @Column(name="nome")
     public String getNome() {
         return nome;

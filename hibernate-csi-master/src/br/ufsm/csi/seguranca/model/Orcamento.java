@@ -1,5 +1,7 @@
 package br.ufsm.csi.seguranca.model;
 
+import org.hibernate.annotations.BatchSize;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -15,12 +17,8 @@ public class Orcamento {
     private Long codigo;
     private Veiculo veiculo;
 
-    public boolean gerarOS(){
-        return false;
-    }
 
-    //Gerados:
-    @Column(name = "descricaoReparos")
+    @Column(name = "descricaoReparos", length = 5000)
     public String getDescricaoReparos() {
         return descricaoReparos;
     }

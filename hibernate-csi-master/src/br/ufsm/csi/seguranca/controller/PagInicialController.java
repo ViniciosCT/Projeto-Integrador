@@ -1,7 +1,6 @@
 package br.ufsm.csi.seguranca.controller;
 
 import br.ufsm.csi.seguranca.dao.HibernateDAO;
-import br.ufsm.csi.seguranca.model.Orcamento;
 import br.ufsm.csi.seguranca.model.OrdemServico;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,7 +21,7 @@ public class PagInicialController {
     @RequestMapping("paginaInicial.html")
     public String getPagInicialPage(Model model) {
 
-        model.addAttribute("faturamento", hibernateDAO.faturamento("valorTotal"));
+        model.addAttribute("faturamento", hibernateDAO.faturamento());
         model.addAttribute("qtdVeiculos", hibernateDAO.conta(OrdemServico.class));
 
         return "paginaInicial";

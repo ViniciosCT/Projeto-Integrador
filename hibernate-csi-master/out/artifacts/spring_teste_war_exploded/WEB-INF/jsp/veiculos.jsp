@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <!doctype html>
 <!--
 Material Design Lite
@@ -23,7 +24,7 @@ limitations under the License
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <title>Material Design Lite</title>
+    <title>Gerenciador Qualitat</title>
 
     <!-- Add to homescreen for Chrome on Android -->
     <meta name="mobile-web-app-capable" content="yes">
@@ -69,10 +70,7 @@ limitations under the License
     <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
         <div class="mdl-layout__header-row mdl-color--primary mdl-color-text--white">
             <div class="mdl-layout-spacer"></div>
-            <div class="mdl-layout-title tituloPagina">
-                Gerenciador Qualitat
-            </div>
-            <div class="paginaAtual">
+            <div class="mdl-layout-title">
                 Gerenciar Veículos
             </div>
             <div class="mdl-layout-spacer"></div>
@@ -98,10 +96,11 @@ limitations under the License
         </header>
         <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
             <a class="mdl-navigation__link" href="paginaInicial.html"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">home</i>Pagina Inicial</a>
-            <a class="mdl-navigation__link" href="veiculos.html"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">directions_car</i>Gerenciar Veículos</a>
+            <a class="mdl-navigation__link mdl-button--raised mdl-button--colored mdl-color-text--blue-grey-50" href="veiculos.html"><i class="mdl-color-text--blue-grey-50 material-icons" role="presentation">directions_car</i>Gerenciar Veículos</a>
             <a class="mdl-navigation__link" href="clientes.html"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">supervisor_account</i>Gerenciar Clientes</a>
             <a class="mdl-navigation__link" href="os.html"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">build</i>Ordem de Serviço</a>
             <a class="mdl-navigation__link" href="orcamento.html"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">attach_money</i>Orçamento</a>
+            <a class="mdl-navigation__link" href="trocaFase.html"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">low_priority</i>Gerenciar Fases</a>
             <div class="mdl-layout-spacer"></div>
         </nav>
     </div>
@@ -109,7 +108,7 @@ limitations under the License
         <div class="mdl-grid demo-content">
 
 
-            <table class="mdl-data-table mdl-js-data-table mdl-shadow--6dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--6-col-desktop">
+            <table class="mdl-data-table mdl-js-data-table mdl-shadow--6dp mdl-cell mdl-cell--7-col mdl-cell--7-col-tablet mdl-cell--11-col-desktop">
                 <thead>
                 <tr>
                     <!-- class "mdl-data-table__cell--non-numeric", align values to left -->
@@ -120,7 +119,7 @@ limitations under the License
                     <th class="mdl-data-table__cell--non-numeric">Cliente</th>
                     <th class="mdl-data-table__cell--non-numeric">Combustivel</th>
                     <th class="mdl-data-table__cell--non-numeric">Cor</th>
-                    <th class="mdl-data-table__cell--non-numeric">Editar</th>
+                    <th class="mdl-data-table__cell--non-numeric">Alterar</th>
                 </tr>
                 </thead>
 
@@ -129,7 +128,7 @@ limitations under the License
 
                     <!-- Row 1 -->
                     <c:forEach items="${veiculos}" var="veiculo">
-                    <form action="alterarVeiculo.html" method="post">
+                    <form action="alterarVeiculo.html" method="post" accept-charset="iso-8859-1,utf-8">
                         <input type="hidden" name="placa" value="${veiculo.placa}">
                         <input type="hidden" name="modelo" value="${veiculo.modelo}">
                         <input type="hidden" name="marca" value="${veiculo.marca}">
@@ -162,7 +161,7 @@ limitations under the License
                 </tbody>
             </table>
 
-            <div class="mdl-cell">
+            <div class="mdl-cell mdl-cell--1-col mdl-cell--1-col-tablet mdl-cell--1-col-desktop">
                 <a href="novoVeiculo.html">
                     <button class="mdl-color-text--white mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
                         Novo

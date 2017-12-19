@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <!doctype html>
 <!--
 Material Design Lite
@@ -22,7 +24,7 @@ limitations under the License
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <title>Material Design Lite</title>
+    <title>Gerenciador Qualitat</title>
 
     <!-- Add to homescreen for Chrome on Android -->
     <meta name="mobile-web-app-capable" content="yes">
@@ -68,11 +70,8 @@ limitations under the License
     <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
         <div class="mdl-layout__header-row mdl-color--primary mdl-color-text--white">
             <div class="mdl-layout-spacer"></div>
-            <div class="mdl-layout-title tituloPagina">
-                Gerenciador Qualitat
-            </div>
-            <div class="paginaAtual">
-                Troca de Fase
+            <div class="mdl-layout-title">
+                Gerenciar Fases
             </div>
             <div class="mdl-layout-spacer"></div>
         </div>
@@ -101,6 +100,7 @@ limitations under the License
             <a class="mdl-navigation__link" href="clientes.html"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">supervisor_account</i>Gerenciar Clientes</a>
             <a class="mdl-navigation__link" href="os.html"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">build</i>Ordem de Serviço</a>
             <a class="mdl-navigation__link" href="orcamento.html"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">attach_money</i>Orçamento</a>
+            <a class="mdl-navigation__link mdl-button--raised mdl-button--colored mdl-color-text--blue-grey-50" href="trocaFase.html"><i class="mdl-color-text--blue-grey-50 material-icons" role="presentation">low_priority</i>Gerenciar Fases</a>
             <div class="mdl-layout-spacer"></div>
         </nav>
     </div>
@@ -110,112 +110,91 @@ limitations under the License
 
             <div class="mdl-card mdl-shadow--6dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
                 <div class="mdl-card__title mdl-color--primary mdl-color-text--white">
-                    <h2 class="mdl-card__title-text">Opções par troca de fase do veículo:</h2>
+                    <h2 class="mdl-card__title-text">Opções para troca de fase do veículo:</h2>
                 </div>
                 <div class="mdl-grid demo-content">
 
                     <div class="mdl-card__supporting-text mdl-cell mdl-cell--2-col">
                         <h5>Espera por Peças</h5>
-                        <h6>R$ 50.648,76</h6>
-                        <h6>54 veículos</h6>
+                        <h6>R$ ${faturamentoFase1}</h6>
+                        <h6>${qtdOSFase1} veículos</h6>
                     </div>
 
                     <div class="mdl-card__supporting-text mdl-cell mdl-cell--2-col">
                         <h5>Desmontagem/ Montagem</h5>
-                        <h6>R$ 11.645,76</h6>
-                        <h6>5 veículos</h6>
+                        <h6>R$ ${faturamentoFase2}</h6>
+                        <h6>${qtdOSFase2} veículos</h6>
                     </div>
 
                     <div class="mdl-card__supporting-text mdl-cell mdl-cell--2-col">
                         <h5>Funilaria</h5>
-                        <h6>R$ 50.648,76</h6>
-                        <h6>54 veículos</h6>
+                        <h6>R$ ${faturamentoFase3}</h6>
+                        <h6>${qtdOSFase3} veículos</h6>
                     </div>
 
                     <div class="mdl-card__supporting-text mdl-cell mdl-cell--2-col">
                         <h5>Preparação de Superfície</h5>
-                        <h6>R$ 50.648,76</h6>
-                        <h6>54 veículos</h6>
+                        <h6>R$ ${faturamentoFase4}</h6>
+                        <h6>${qtdOSFase4} veículos</h6>
                     </div>
 
                     <div class="mdl-card__supporting-text mdl-cell mdl-cell--2-col">
                         <h5>Pintura</h5>
-                        <h6>R$ 5.858,76</h6>
-                        <h6>3 veículos</h6>
+                        <h6>R$ ${faturamentoFase5}</h6>
+                        <h6>${qtdOSFase5} veículos</h6>
                     </div>
 
                     <div class="mdl-card__supporting-text mdl-cell mdl-cell--2-col">
                         <h5>Acabamento</h5>
-                        <h6>R$ 50.648,76</h6>
-                        <h6>54 veículos</h6>
+                        <h6>R$ ${faturamentoFase6}</h6>
+                        <h6>${qtdOSFase6} veículos</h6>
                     </div>
 
                     <div class="mdl-card__supporting-text mdl-cell mdl-cell--2-col">
                         <ul>
-                            <li><a href="trocaFaseSelecao.html">AAA-1111</a></li>
-                            <li><a href="trocaFaseSelecao.html">AKD-0151</a></li>
-                            <li><a href="trocaFaseSelecao.html">AAA-1111</a></li>
-                            <li><a href="trocaFaseSelecao.html">AKD-0151</a></li>
-                            <li><a href="trocaFaseSelecao.html">AAA-1111</a></li>
-                            <li><a href="trocaFaseSelecao.html">AKD-0151</a></li>
-                            <li><a href="trocaFaseSelecao.html">AAA-1111</a></li>
-                            <li><a href="trocaFaseSelecao.html">AKD-0151</a></li>
+                            <c:forEach var="os" items="${listaFase1}">
+                                <li><a href="http://localhost:8080/Qualitati/trocaFaseSelecao.html?&codOrdemServico=${os.codigo}"> ${os.orcamento.veiculo.placa} </a></li>
+                            </c:forEach>
                         </ul>
                     </div>
 
                     <div class="mdl-card__supporting-text mdl-cell mdl-cell--2-col">
                         <ul>
-                            <li><a href="trocaFaseSelecao.html">AAA-1111</a></li>
-                            <li><a href="trocaFaseSelecao.html">AKD-0151</a></li>
-                            <li><a href="trocaFaseSelecao.html">AAA-1111</a></li>
-                            <li><a href="trocaFaseSelecao.html">AKD-0151</a></li>
+                            <c:forEach var="os" items="${listaFase2}">
+                                <li><a href="http://localhost:8080/Qualitati/trocaFaseSelecao.html?&codOrdemServico=${os.codigo}"> ${os.orcamento.veiculo.placa} </a></li>
+                            </c:forEach>
                         </ul>
                     </div>
 
                     <div class="mdl-card__supporting-text mdl-cell mdl-cell--2-col">
                         <ul>
-                            <li><a href="trocaFaseSelecao.html">AAA-1111</a></li>
-                            <li><a href="trocaFaseSelecao.html">AKD-0151</a></li>
-                            <li><a href="trocaFaseSelecao.html">AAA-1111</a></li>
-                            <li><a href="trocaFaseSelecao.html">AKD-0151</a></li>
-                            <li><a href="trocaFaseSelecao.html">AAA-1111</a></li>
-                            <li><a href="trocaFaseSelecao.html">AKD-0151</a></li>
-                            <li><a href="trocaFaseSelecao.html">AAA-1111</a></li>
-                            <li><a href="trocaFaseSelecao.html">AKD-0151</a></li>
+                            <c:forEach var="os" items="${listaFase3}">
+                                <li><a href="http://localhost:8080/Qualitati/trocaFaseSelecao.html?&codOrdemServico=${os.codigo}"> ${os.orcamento.veiculo.placa} </a></li>
+                            </c:forEach>
                         </ul>
                     </div>
 
                     <div class="mdl-card__supporting-text mdl-cell mdl-cell--2-col">
                         <ul>
-                            <li><a href="trocaFaseSelecao.html">AAA-1111</a></li>
-                            <li><a href="trocaFaseSelecao.html">AKD-0151</a></li>
-                            <li><a href="trocaFaseSelecao.html">AAA-1111</a></li>
-                            <li><a href="trocaFaseSelecao.html">AKD-0151</a></li>
-                            <li><a href="trocaFaseSelecao.html">AAA-1111</a></li>
-                            <li><a href="trocaFaseSelecao.html">AKD-0151</a></li>
-                            <li><a href="trocaFaseSelecao.html">AAA-1111</a></li>
-                            <li><a href="trocaFaseSelecao.html">AKD-0151</a></li>
+                            <c:forEach var="os" items="${listaFase4}">
+                                <li><a href="http://localhost:8080/Qualitati/trocaFaseSelecao.html?&codOrdemServico=${os.codigo}"> ${os.orcamento.veiculo.placa} </a></li>
+                            </c:forEach>
                         </ul>
                     </div>
 
                     <div class="mdl-card__supporting-text mdl-cell mdl-cell--2-col">
                         <ul>
-                            <li><a href="trocaFaseSelecao.html">AAA-1111</a></li>
-                            <li><a href="trocaFaseSelecao.html">AKD-0151</a></li>
-                            <li><a href="trocaFaseSelecao.html">AAA-1111</a></li>
+                            <c:forEach var="os" items="${listaFase5}">
+                                <li><a href="http://localhost:8080/Qualitati/trocaFaseSelecao.html?&codOrdemServico=${os.codigo}"> ${os.orcamento.veiculo.placa} </a></li>
+                            </c:forEach>
                         </ul>
                     </div>
 
                     <div class="mdl-card__supporting-text mdl-cell mdl-cell--2-col">
                         <ul>
-                            <li><a href="trocaFaseSelecao.html">AAA-1111</a></li>
-                            <li><a href="trocaFaseSelecao.html">AKD-0151</a></li>
-                            <li><a href="trocaFaseSelecao.html">AAA-1111</a></li>
-                            <li><a href="trocaFaseSelecao.html">AKD-0151</a></li>
-                            <li><a href="trocaFaseSelecao.html">AAA-1111</a></li>
-                            <li><a href="trocaFaseSelecao.html">AKD-0151</a></li>
-                            <li><a href="trocaFaseSelecao.html">AAA-1111</a></li>
-                            <li><a href="trocaFaseSelecao.html">AKD-0151</a></li>
+                            <c:forEach var="os" items="${listaFase6}">
+                                <li><a href="http://localhost:8080/Qualitati/trocaFaseSelecao.html?&codOrdemServico=${os.codigo}"> ${os.orcamento.veiculo.placa} </a></li>
+                            </c:forEach>
                         </ul>
                     </div>
 

@@ -41,5 +41,6 @@
     <orderEntry type="library" name="javax.servlet:javax.servlet-api:3.0.1" level="project" />
     <orderEntry type="library" name="org.owasp.encoder:encoder-esapi:1.2.1" level="project" />
     <orderEntry type="library" name="org.postgresql:postgresql:9.3-1101-jdbc4" level="project" />
+    <orderEntry type="library" name="joda-time:joda-time:2.9.9" level="project" />
   </component>
 </module>

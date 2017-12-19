@@ -1,3 +1,5 @@
+<%@ page contentType="text/html; charset=UTF-8" language="java" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!doctype html>
 <!--
 Material Design Lite
@@ -22,7 +24,7 @@ limitations under the License
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <title>Material Design Lite</title>
+    <title>Gerenciador Qualitat</title>
 
     <!-- Add to homescreen for Chrome on Android -->
     <meta name="mobile-web-app-capable" content="yes">
@@ -68,10 +70,7 @@ limitations under the License
     <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
         <div class="mdl-layout__header-row mdl-color--primary mdl-color-text--white">
             <div class="mdl-layout-spacer"></div>
-            <div class="mdl-layout-title tituloPagina">
-                Gerenciador Qualitat
-            </div>
-            <div class="paginaAtual">
+            <div class="mdl-layout-title">
                 Descrição da Ordem de Serviço
             </div>
             <div class="mdl-layout-spacer"></div>
@@ -96,11 +95,12 @@ limitations under the License
             </div>
         </header>
         <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
-            <a class="mdl-navigation__link" href="index.html"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">home</i>Pagina Inicial</a>
+            <a class="mdl-navigation__link" href="paginaInicial.html"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">home</i>Pagina Inicial</a>
             <a class="mdl-navigation__link" href="veiculos.html"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">directions_car</i>Gerenciar Veículos</a>
             <a class="mdl-navigation__link" href="clientes.html"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">supervisor_account</i>Gerenciar Clientes</a>
-            <a class="mdl-navigation__link" href="os.html"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">build</i>Ordem de Serviço</a>
+            <a class="mdl-navigation__link mdl-button--raised mdl-button--colored mdl-color-text--blue-grey-50" href="os.html"><i class="mdl-color-text--blue-grey-50 material-icons" role="presentation">build</i>Ordem de Serviço</a>
             <a class="mdl-navigation__link" href="orcamento.html"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">attach_money</i>Orçamento</a>
+            <a class="mdl-navigation__link" href="trocaFase.html"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">low_priority</i>Gerenciar Fases</a>
             <div class="mdl-layout-spacer"></div>
         </nav>
     </div>
@@ -110,48 +110,32 @@ limitations under the License
 
             <div class="mdl-card mdl-shadow--6dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--8-col-desktop">
                 <div class="mdl-card__title mdl-color--primary mdl-color-text--white">
-                    <h2 class="mdl-card__title-text">Descrição: AAAA-111</h2>
+                    <h2 class="mdl-card__title-text">Descrição: ${ordemServico.orcamento.veiculo.placa}</h2>
                 </div>
                 <div class="mdl-grid demo-content">
 
                     <div class="mdl-card__supporting-text mdl-cell mdl-cell--6-col">
-                        <p>Entrada(Data): 23/02/2017</p>
-                        <p>Entrada(Hora): 08:55</p>
-                        <p>Cliente: Luis Alves Santos</p>
-                        <p>Total: 1748,50</p>
-                        <p>Fase atual: Espera por peças</p>
-                        <p>Tempo na loja: 26h</p>
-                        <p>Tempo na fase atual: 5:30h</p>
+                        <p>Entrada(Data): <fmt:formatDate pattern="dd/MM/yyyy" value="${ordemServico.dataEntrada}" /></p>
+                        <p>Entrada(Horário): <fmt:formatDate pattern="HH:mm:ss" value="${ordemServico.dataEntrada}" /></p>
+                        <p>Cliente: ${ordemServico.orcamento.veiculo.cliente.nome}</p>
+                        <p>Total: ${ordemServico.orcamento.valorTotal}</p>
+                        <p>Fase atual: ${ordemServico.faseAtual.nome}</p>
+                        <p>Tempo na loja: ${tempoLoja}</p>
+                        <p>Tempo na fase atual: ${tempoFase}</p>
                     </div>
 
                     <div class="mdl-card__supporting-text mdl-cell mdl-cell--6-col">
                         <p>Observações: </p>
                         <div class="mdl-textfield mdl-js-textfield">
-                  <textarea form="cadastro" class="mdl-textfield__input" type="text" rows= "10" id="sample5">RECUPERAR / PINTAR
-PARALAMA PARACHOQUE DIANT LE
-
-TROCAR
-MOLDURA FAROLETE ESQ
-FAROLETE ESQ
-GRADE INF
-GRADE DO RADIADOR
-SUPORTES LE
-PROTETOR P/CHOQUE DIANT
-P/CHOQUE DIANT INF
-
-ACABAMENTO DE OINTURA
-
-LAVAGEM
-
-CHECKLIST
-                </textarea>
+                            <textarea class="mdl-textfield__input" type="text" rows= "10" id="sample5">${ordemServico.orcamento.descricaoReparos}</textarea>
                         </div>
 
                     </div>
 
                 </div>
                 <div class="mdl-card__actions mdl-card--border">
-                    <a href="trocaFase.html"><button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Trocar fase</button></a>
+                    <a href="http://localhost:8080/Qualitati/trocaFaseSelecao.html?&codOrdemServico=${ordemServico.codigo}"><button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Trocar fase</button></a>
+                    <a href="http://localhost:8080/Qualitati/finalizaOS.html?&codOrdemServico=${ordemServico.codigo}"><button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Finalizar Ordem</button></a>
                 </div>
             </div>
 

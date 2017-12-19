@@ -1,5 +1,7 @@
 package br.ufsm.csi.seguranca.model;
 
+import org.hibernate.annotations.BatchSize;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
@@ -12,19 +14,8 @@ public class OrdemServico {
     private String descricaoReparos;
     private Long codigo;
     private Fase faseAtual;
-    //private ArrayList<Fase> fases;
     private Orcamento orcamento;
 
-
-    public Date getTempoPercorrido(Fase fase){
-        return null;
-    }
-
-    public boolean setFase(Fase fase){
-        return false;
-    }
-
-    //Gerados:
     @Column(name = "dataEntrada")
     public Date getDataEntrada() {
         return dataEntrada;
@@ -34,7 +25,7 @@ public class OrdemServico {
         this.dataEntrada = dataEntrada;
     }
 
-    @Column(name = "descricaoReparos")
+    @Column(name = "descricaoReparos", length = 5000)
     public String getDescricaoReparos() {
         return descricaoReparos;
     }
@@ -75,12 +66,4 @@ public class OrdemServico {
         this.orcamento = orcamento;
     }
 
-//    @ManyToMany(mappedBy="ordens")
-//    public ArrayList<Fase> getFases() {
-//        return fases;
-//    }
-//
-//    public void setFases(ArrayList<Fase> fases) {
-//        this.fases = fases;
-//    }
 }

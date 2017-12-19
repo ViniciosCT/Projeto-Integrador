@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <!doctype html>
 <!--
 Material Design Lite
@@ -22,7 +24,7 @@ limitations under the License
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <title>Material Design Lite</title>
+    <title>Gerenciador Qualitat</title>
 
     <!-- Add to homescreen for Chrome on Android -->
     <meta name="mobile-web-app-capable" content="yes">
@@ -68,10 +70,7 @@ limitations under the License
     <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
         <div class="mdl-layout__header-row mdl-color--primary mdl-color-text--white">
             <div class="mdl-layout-spacer"></div>
-            <div class="mdl-layout-title tituloPagina">
-                Gerenciador Qualitat
-            </div>
-            <div class="paginaAtual">
+            <div class="mdl-layout-title">
                 Troca de Fase
             </div>
             <div class="mdl-layout-spacer"></div>
@@ -101,6 +100,7 @@ limitations under the License
             <a class="mdl-navigation__link" href="clientes.html"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">supervisor_account</i>Gerenciar Clientes</a>
             <a class="mdl-navigation__link" href="os.html"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">build</i>Ordem de Serviço</a>
             <a class="mdl-navigation__link" href="orcamento.html"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">attach_money</i>Orçamento</a>
+            <a class="mdl-navigation__link mdl-button--raised mdl-button--colored mdl-color-text--blue-grey-50" href="trocaFase.html"><i class="mdl-color-text--blue-grey-50 material-icons" role="presentation">low_priority</i>Gerenciar Fases</a>
             <div class="mdl-layout-spacer"></div>
         </nav>
     </div>
@@ -109,45 +109,28 @@ limitations under the License
 
             <div class="mdl-card mdl-shadow--6dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--6-col-desktop">
                 <div class="mdl-card__title mdl-color--primary mdl-color-text--white">
-                    <h2 class="mdl-card__title-text">Descrição: AAAA-111</h2>
+                    <h2 class="mdl-card__title-text">Descrição: ${ordemServico.orcamento.veiculo.placa}</h2>
                 </div>
                 <div class="mdl-grid demo-content">
 
                     <div class="mdl-card__supporting-text mdl-cell mdl-cell--12-col">
-                        <p>Fase Atual: Desmontagem/Montagem</p>
+                        <p>Fase Atual: ${ordemServico.faseAtual.nome}</p>
                     </div>
 
                     <div class="mdl-card__supporting-text mdl-cell mdl-cell--6-col">
-                        <p>Modelo: ONIX</p>
-                        <p>Marca: Chevrolet</p>
+                        <p>Modelo: ${ordemServico.orcamento.veiculo.modelo}</p>
+                        <p>Marca: ${ordemServico.orcamento.veiculo.marca}</p>
                     </div>
 
                     <div class="mdl-card__supporting-text mdl-cell mdl-cell--6-col">
-                        <p>Tempo na fase atual: 6h:16min</p>
-                        <p>Tempo total: 27h:48min</p>
+                        <p>Tempo na fase atual: ${tempoFase}</p>
+                        <p>Tempo na loja: ${tempoLoja}</p>
                     </div>
 
                     <div class="mdl-card__supporting-text mdl-cell mdl-cell--12-col">
                         <p>Observações: </p>
                         <div class="mdl-textfield mdl-js-textfield">
-                <textarea form="cadastro" class="mdl-textfield__input" type="text" rows="10" id="sample5">RECUPERAR / PINTAR
-PARALAMA PARACHOQUE DIANT LE
-
-TROCAR
-MOLDURA FAROLETE ESQ
-FAROLETE ESQ
-GRADE INF
-GRADE DO RADIADOR
-SUPORTES LE
-PROTETOR P/CHOQUE DIANT
-P/CHOQUE DIANT INF
-
-ACABAMENTO DE OINTURA
-
-LAVAGEM
-
-CHECKLIST
-                </textarea>
+                <textarea class="mdl-textfield__input" type="text" rows="10" id="sample5">${ordemServico.descricaoReparos}</textarea>
                         </div>
 
                     </div>
@@ -161,24 +144,21 @@ CHECKLIST
                 </div>
 
                 <div class="mdl-card__supporting-text mdl-cell mdl-cell--12-col">
-                    <form action="#" id="cadastro">
+                    <form action="mudaFase.html" id="trocaFase" method="post">
+                        <input type="hidden" name="codOS" value="${ordemServico.codigo}">
                     </form>
                     <h5>Nova Fase:</h5>
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <select name="clientlist" form="cadastro" class="mdl-textfield__input">
-                            <option value="#">Selecione uma Fase</option>
-                            <option value="Espera_por_Pecas">Espera por Peças</option>
-                            <option value="Desmontagem_Montagem">Desmontagem/Montagem</option>
-                            <option value="Funilaria">Funilaria</option>
-                            <option value="Preparacao_de_Superficie">Preparação de Superfície</option>
-                            <option value="Pintura">Pintura</option>
-                            <option value="Acabamento">Acabamento</option>
+                        <select name="codFase" form="trocaFase" class="mdl-textfield__input">
+                            <c:forEach items="${fasesLista}" var="fase">
+                                <option value="${fase.codigo}">${fase.nome}</option>
+                            </c:forEach>
                         </select>
                     </div>
                 </div>
 
                 <div class="mdl-card__actions mdl-card--border">
-                    <input form="cadastro" type="submit" class="mdl-color-text--white mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"></input>
+                    <button form="trocaFase" type="submit" class="mdl-color-text--white mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Trocar Fase</button>
                 </div>
 
             </div>

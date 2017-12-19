@@ -15,7 +15,6 @@ public class Veiculo {
     private Long codigo;
     private Cliente cliente;
 
-    //Gerados:
     @Column(name = "placa")
     public String getPlaca() {
         return placa;

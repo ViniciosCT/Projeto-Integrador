@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <!doctype html>
 <!--
 Material Design Lite
@@ -22,7 +24,7 @@ limitations under the License
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <title>Material Design Lite</title>
+    <title>Gerenciador Qualitat</title>
 
     <!-- Add to homescreen for Chrome on Android -->
     <meta name="mobile-web-app-capable" content="yes">
@@ -68,10 +70,7 @@ limitations under the License
     <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
         <div class="mdl-layout__header-row mdl-color--primary mdl-color-text--white">
             <div class="mdl-layout-spacer"></div>
-            <div class="mdl-layout-title tituloPagina">
-                Gerenciador Qualitat
-            </div>
-            <div class="paginaAtual">
+            <div class="mdl-layout-title">
                 Novo Orçamento
             </div>
             <div class="mdl-layout-spacer"></div>
@@ -100,7 +99,8 @@ limitations under the License
             <a class="mdl-navigation__link" href="veiculos.html"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">directions_car</i>Gerenciar Veículos</a>
             <a class="mdl-navigation__link" href="clientes.html"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">supervisor_account</i>Gerenciar Clientes</a>
             <a class="mdl-navigation__link" href="os.html"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">build</i>Ordem de Serviço</a>
-            <a class="mdl-navigation__link" href="orcamento.html"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">attach_money</i>Orçamento</a>
+            <a class="mdl-navigation__link mdl-button--raised mdl-button--colored mdl-color-text--blue-grey-50" href="orcamento.html"><i class="mdl-color-text--blue-grey-50 material-icons" role="presentation">attach_money</i>Orçamento</a>
+            <a class="mdl-navigation__link" href="trocaFase.html"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">low_priority</i>Gerenciar Fases</a>
             <div class="mdl-layout-spacer"></div>
         </nav>
     </div>
@@ -110,40 +110,39 @@ limitations under the License
 
             <div class="mdl-card mdl-shadow--6dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--6-col-desktop">
                 <div class="mdl-card__title mdl-color--primary mdl-color-text--white">
-                    <h2 class="mdl-card__title-text">Cadastro:</h2>
+                    <h2 class="mdl-card__title-text">Cadastrar Orçamento:</h2>
                 </div>
                 <div class="mdl-grid demo-content">
 
-                    <form action="#" id="cadastro">
+                    <form action="criaOrcamento.html" id="cadastro" method="post" accept-charset="iso-8859-1,utf-8">
                     </form>
                     <div class="mdl-card__supporting-text mdl-cell mdl-cell--6-col">
 
                         <div class="mdl-textfield mdl-js-textfield">
-                            <textarea form="cadastro" class="mdl-textfield__input" type="text" rows= "3" id="sample5" ></textarea>
-                            <label form="cadastro" class="mdl-textfield__label" for="sample5">Observações</label>
+                            <textarea  required form="cadastro" class="mdl-textfield__input" type="text" rows= "3" id="observacoes" name="descricaoReparos"></textarea>
+                            <label form="cadastro" class="mdl-textfield__label" for="observacoes">Observações</label>
                         </div>
 
                     </div>
                     <div class="mdl-card__supporting-text mdl-cell mdl-cell--6-col">
 
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input" type="number" pattern="-?[0-9]*(\.[0-9]+)?" id="sample4">
-                            <label class="mdl-textfield__label" for="sample4">Valor para peças</label>
-                            <span class="mdl-textfield__error">Este valor não é um numero!</span>
+                            <input required form="cadastro" class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="valorPecas" name="valorTotalPecas">
+                            <label class="mdl-textfield__label" for="valorPecas">Valor para peças</label>
+                            <span class="mdl-textfield__error">Este valor não é um numero valido!</span>
                         </div>
 
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input" type="number" pattern="-?[0-9]*(\.[0-9]+)?" id="sample4">
-                            <label class="mdl-textfield__label" for="sample4">Valor para mão de obra</label>
-                            <span class="mdl-textfield__error">Este valor não é um numero!</span>
+                            <input required form="cadastro" class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="valorMO" name="valorTotalMO">
+                            <label class="mdl-textfield__label" for="valorMO">Valor para mão de obra</label>
+                            <span class="mdl-textfield__error">Este valor não é um numero valido!</span>
                         </div>
 
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <select name="clientlist" form="cadastro" class="mdl-textfield__input" id="sample3">
-                                <option value="#">Selecione um veículo</option>
-                                <option value="Ricardo da Silva">Ricardo da Silva</option>
-                                <option value="Vinícios Camponogara Tomazetti">Vinícios Camponogara Tomazetti</option>
-                                <option value="Pedro Paulo Cardoso">Pedro Paulo Cardoso</option>
+                            <select form="cadastro" class="mdl-textfield__input" name="codVeiculo">
+                                <c:forEach items="${veiculos}" var="veiculo" >
+                                    <option value="${veiculo.codigo}">${veiculo.placa}</option>
+                                </c:forEach>
                             </select>
                         </div>
 
@@ -151,7 +150,7 @@ limitations under the License
 
                 </div>
                 <div class="mdl-card__actions mdl-card--border">
-                    <input form="cadastro" type="submit" class="mdl-color-text--white mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"></input>
+                    <button form="cadastro" type="submit" class="mdl-color-text--white mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Cadastrar</button>
                 </div>
             </div>
 

@@ -10,10 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import java.io.UnsupportedEncodingException;
-import java.security.NoSuchAlgorithmException;
 import java.util.Collection;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -44,7 +41,7 @@ public class VeiculosController {
 
     @Transactional
     @RequestMapping(value = "criaVeiculo.html", method = RequestMethod.POST)
-    public String criaVeiculo(Veiculo veiculo, Long codCliente) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+    public String criaVeiculo(Veiculo veiculo, Long codCliente) {
         Cliente cliente  = (Cliente) hibernateDAO.carregaObjeto(Cliente.class , codCliente);
         veiculo.setCliente(cliente);
         if (veiculo.getCodigo() == null) {

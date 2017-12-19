@@ -2,7 +2,6 @@ package br.ufsm.csi.seguranca.controller;
 
 import br.ufsm.csi.seguranca.dao.HibernateDAO;
 import br.ufsm.csi.seguranca.model.Cliente;
-import br.ufsm.csi.seguranca.model.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -42,7 +41,7 @@ public class ClienteController {
 
     @Transactional
     @RequestMapping(value = "criaCliente.html", method = RequestMethod.POST)
-    public String criaCliente(Cliente cliente) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+    public String criaCliente(Cliente cliente){
         System.out.println("Chamou AQ");
         if (cliente.getCodigo() == null) {
             cliente.setDataCadastro(new Date());
@@ -67,36 +66,5 @@ public class ClienteController {
         model.addAttribute("clientes", clientesLista);
         return "clientes";
     }
-
-//    @Transactional
-//    @RequestMapping(value = "remove-cliente.html", method = RequestMethod.POST)
-//    public String removeCliente(Long codigo) throws NoSuchAlgorithmException, UnsupportedEncodingException {
-//        Cliente cliente = (Cliente) hibernateDAO.carregaObjeto(Cliente.class, codigo);
-//        hibernateDAO.removeObjeto(cliente);
-//        return "Cliente";
-//    }
-
-
-//    @Transactional
-//    @RequestMapping("login2.html")
-//    public String login(String login, String senha) throws UnsupportedEncodingException, NoSuchAlgorithmException {
-////        Map<String, Object> map = new HashMap<>();
-////        map.put("login", login);
-////        MessageDigest md = MessageDigest.getInstance("SHA-256");
-////        map.put("senha", md.digest(senha.getBytes("ISO-8859-1")));
-////        Collection usuarios = hibernateDAO.listaObjetosEquals(Usuario.class, map);
-////        if (usuarios == null || usuarios.isEmpty()) {
-////            return "acesso-negado";
-////        } else {
-////            return "ok";
-////        }
-//        Usuario usuario = hibernateDAO.findUsuarioHQL(login, senha);
-//        if (usuario == null) {
-//            return "acesso-negado";
-//        } else {
-//            return "ok";
-//        }
-//    }
-
 
 }

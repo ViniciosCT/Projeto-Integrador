@@ -25,7 +25,7 @@ limitations under the License
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-  <title>Login</title>
+  <title>Gerenciador Qualitat</title>
 
   <!-- Add to homescreen for Chrome on Android -->
   <meta name="mobile-web-app-capable" content="yes">
@@ -67,14 +67,14 @@ limitations under the License
 </head>
 
 <body>
-<div class="mdl-layout mdl-js-layout mdl-color--grey-100 mdl-layout--fixed-header">
+<div class="demo-layout mdl-layout mdl-js-layout mdl-color--grey-100 mdl-layout--fixed-header">
   <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
     <div class="mdl-layout__header-row">
       <span class="mdl-layout-title">Gerenciador Qualitat</span>
       <div class="mdl-layout-spacer"></div>
     </div>
   </header>
-  <main class="mdl-layout__content">
+  <main class="mdl-layout__content mdl-color--grey-100">
     <div class="mdl-grid demo-content">
 
       <div class="mdl-card mdl-shadow--6dp mdl-cell mdl-cell--8-col">
@@ -88,7 +88,7 @@ limitations under the License
           </div>
 
           <div class="mdl-card__supporting-text mdl-cell mdl-cell--6-col">
-            <p>Aqui vai uma breve descrição sobre o sistema, imperdiet ut vivamus a, nam lectus at nunc. Quam euismod sem, semper ut potenti pellentesque quisque.</p>
+            <p>Caso não lembre sua senha, favor enviar um email relatando o problema para ajuda@qualitati.com</p>
           </div>
         </div>
 
@@ -99,21 +99,23 @@ limitations under the License
         <div class="mdl-card__title mdl-color--primary mdl-color-text--white">
           <h2 class="mdl-card__title-text">Login</h2>
         </div>
+        <form action="login.html" method="post" id="login">
+        </form>
         <div class="mdl-card__supporting-text">
-          <form action="login.html" method="post" id="login">
-            <div class="mdl-textfield mdl-js-textfield">
-              <input class="mdl-textfield__input" type="text" id="username" name="login"/>
-              <label class="mdl-textfield__label" for="username">Usuário</label>
+
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+              <input form="login" class="mdl-textfield__input" type="text" id="username" name="login"/>
+              <label form="login" class="mdl-textfield__label" for="username">Usuário</label>
             </div>
-            <div class="mdl-textfield mdl-js-textfield">
-              <input class="mdl-textfield__input" type="password" id="userpass" name="senha"/>
-              <label class="mdl-textfield__label" for="userpass">Senha</label>
+
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+              <input form="login" class="mdl-textfield__input" type="password" id="userpass" name="senha"/>
+              <label form="login" class="mdl-textfield__label" for="userpass">Senha</label>
             </div>
-          </form>
+
         </div>
         <div class="mdl-card__actions mdl-card--border">
           <button form="login" type="submit" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Entrar</button>
-          <a href="#">Esqueci minha senha</a>
           <c:if test="${not empty msgDoServidor}">
             <p>Dados incorretos! </p>
           </c:if>
