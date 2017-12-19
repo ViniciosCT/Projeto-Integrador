@@ -1,1 +1,2 @@
-https://github.com/ViniciosCT/Projeto-Integrador
+Link para repositório do GitHub, onde se encontra meu projeto:
+	<https://github.com/ViniciosCT/Projeto-Integrador/tree/master/hibernate-csi-master>

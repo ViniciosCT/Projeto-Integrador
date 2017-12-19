@@ -118,7 +118,7 @@ limitations under the License
                         <p>Entrada(Data): <fmt:formatDate pattern="dd/MM/yyyy" value="${ordemServico.dataEntrada}" /></p>
                         <p>Entrada(Horário): <fmt:formatDate pattern="HH:mm:ss" value="${ordemServico.dataEntrada}" /></p>
                         <p>Cliente: ${ordemServico.orcamento.veiculo.cliente.nome}</p>
-                        <p>Total: ${ordemServico.orcamento.valorTotal}</p>
+                        <p>Total: R$${ordemServico.orcamento.valorTotal}</p>
                         <p>Fase atual: ${ordemServico.faseAtual.nome}</p>
                         <p>Tempo na loja: ${tempoLoja}</p>
                         <p>Tempo na fase atual: ${tempoFase}</p>

@@ -117,7 +117,7 @@ limitations under the License
                         <th class="mdl-data-table__cell--non-numeric">Entrada (Data)</th>
                         <th class="mdl-data-table__cell--non-numeric">Entrada (Horário)</th>
                         <th class="mdl-data-table__cell--non-numeric">Cliente</th>
-                        <th class="mdl-data-table__cell--non-numeric">Total</th>
+                        <th class="mdl-data-table__cell--non-numeric">Total (R$)</th>
                         <th class="mdl-data-table__cell--non-numeric">Mais</th>
                     </tr>
                 </thead>
